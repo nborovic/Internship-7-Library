@@ -131,9 +131,14 @@
     <Compile Include="Entities\Models\Loan.cs" />
     <Compile Include="Entities\Models\Publisher.cs" />
     <Compile Include="Entities\Models\Student.cs" />
+    <Compile Include="Enums\Gender.cs" />
     <Compile Include="Migrations\20190208221129_InitialCreate.cs" />
     <Compile Include="Migrations\20190208221129_InitialCreate.designer.cs">
       <DependentUpon>20190208221129_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190209090844_AddedGenderPropertyToStudent.cs" />
+    <Compile Include="Migrations\20190209090844_AddedGenderPropertyToStudent.designer.cs">
+      <DependentUpon>20190209090844_AddedGenderPropertyToStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

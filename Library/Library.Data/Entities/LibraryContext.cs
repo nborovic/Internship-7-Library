@@ -16,5 +16,7 @@ namespace Library.Data.Entities
         {
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LibraryDatabase"].ConnectionString);
         }
+
+
     }
 }

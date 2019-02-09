@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Library.Data.Enums;
 
 namespace Library.Data.Entities.Models
 {
@@ -10,5 +11,6 @@ namespace Library.Data.Entities.Models
         [MaxLength(30)] public string LastName { get; set; }
         public DateTime Birthdate { get; set; }
         [MaxLength(3)] public string Class { get; set; }
+        public Gender Gender { get; set; }
     }
 }
