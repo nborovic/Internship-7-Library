@@ -7,33 +7,38 @@ namespace Library.Domain.Repositories
 {
     public class PublishersRepository
     {
-        public static LibraryContext Context = new LibraryContext();
+        private readonly LibraryContext _context;
+
+        public PublishersRepository(LibraryContext context)
+        {
+            _context = context;
+        }
 
         public void Add(Publisher publisherToAdd)
         {
-            Context.Publishers.Add(publisherToAdd);
+            _context.Publishers.Add(publisherToAdd);
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Remove(Publisher publisherToRemove)
         {
-            Context.Publishers.Remove(publisherToRemove);
+            _context.Publishers.Remove(publisherToRemove);
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Edit(Loan editedPublisher)
         {
-            var publisherToEdit = Context.Publishers.FirstOrDefault(publisher => publisher.Id == editedPublisher.Id);
+            var publisherToEdit = _context.Publishers.FirstOrDefault(publisher => publisher.Id == editedPublisher.Id);
             if (publisherToEdit == null) return;
 
             publisherToEdit.Name = publisherToEdit.Name;
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
-        public Publisher Get(int id) => Context.Publishers.Find(id);
-        public List<Publisher> GetAll() => Context.Publishers.ToList();
+        public Publisher Get(int id) => _context.Publishers.Find(id);
+        public List<Publisher> GetAll() => _context.Publishers.ToList();
     }
 }

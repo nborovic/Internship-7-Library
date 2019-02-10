@@ -9,5 +9,10 @@ namespace Library.Data.Entities.Models
         [MaxLength(30)] public string FirstName { get; set; }
         [MaxLength(30)] public string LastName { get; set; }
         public ICollection<Book> Books { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id} | {FirstName} {LastName}";
+        }
     }
 }

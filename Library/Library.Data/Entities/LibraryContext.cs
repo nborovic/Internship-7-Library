@@ -17,6 +17,16 @@ namespace Library.Data.Entities
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LibraryDatabase"].ConnectionString);
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Loan>()
+                .HasOne(loan => loan.Book)
+                .WithMany(book => book.Loans)
+                .HasForeignKey(loan => loan.BookId);
+            modelBuilder.Entity<Loan>()
+                .HasOne(loan => loan.Student)
+                .WithMany(student => student.Loans)
+                .HasForeignKey(loan => loan.StudentId);
+        }
     }
 }

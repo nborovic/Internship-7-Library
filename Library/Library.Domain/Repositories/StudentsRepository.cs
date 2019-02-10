@@ -7,37 +7,43 @@ namespace Library.Domain.Repositories
 {
     public class StudentsRepository
     {
-        public static LibraryContext Context = new LibraryContext();
+        private readonly LibraryContext _context;
+
+        public StudentsRepository(LibraryContext context)
+        {
+            _context = context;
+        }
 
         public void Add(Student studentToAdd)
         {
-            Context.Students.Add(studentToAdd);
+            _context.Students.Add(studentToAdd);
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Remove(Student studentToRemove)
         {
-            Context.Students.Remove(studentToRemove);
+            _context.Students.Remove(studentToRemove);
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Edit(Student editedStudent)
         {
-            var studentToEdit = Context.Students.FirstOrDefault(student => student.Id == editedStudent.Id);
+            var studentToEdit = _context.Students.FirstOrDefault(student => student.Id == editedStudent.Id);
             if (studentToEdit == null) return;
 
             studentToEdit.FirstName = editedStudent.FirstName;
             studentToEdit.LastName = editedStudent.LastName;
             studentToEdit.Birthdate = editedStudent.Birthdate;
             studentToEdit.Class = editedStudent.Class;
-            studentToEdit.Gender = studentToEdit.Gender;
+            studentToEdit.Gender = editedStudent.Gender;
+            studentToEdit.Loans = editedStudent.Loans;
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
 
-        public Student Get(int id) => Context.Students.Find(id);
-        public List<Student> GetAll() => Context.Students.ToList();
+        public Student Get(int id) => _context.Students.Find(id);
+        public List<Student> GetAll() => _context.Students.ToList();
     }
 }
