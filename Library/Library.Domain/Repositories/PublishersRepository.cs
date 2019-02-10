@@ -2,6 +2,8 @@
 using System.Linq;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Library.Domain.Repositories
 {
@@ -28,9 +30,9 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public void Edit(Loan editedPublisher)
+        public void Edit(Publisher editedPublisher)
         {
-            var publisherToEdit = _context.Publishers.FirstOrDefault(publisher => publisher.Id == editedPublisher.Id);
+            var publisherToEdit = _context.Publishers.Find(editedPublisher.Id);
             if (publisherToEdit == null) return;
 
             publisherToEdit.Name = publisherToEdit.Name;
@@ -38,7 +40,7 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public Publisher Get(int id) => _context.Publishers.Find(id);
-        public List<Publisher> GetAll() => _context.Publishers.ToList();
+        public Publisher Get(int id) => _context.Publishers.Include(publisher => publisher.Books).FirstOrDefault(publisher => publisher.Id == id);
+        public List<Publisher> GetAll() => _context.Publishers.Include(publisher => publisher.Books).ToList();
     }
 }

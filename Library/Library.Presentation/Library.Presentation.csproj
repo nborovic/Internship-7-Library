@@ -46,16 +46,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AuthorDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorDetails.Designer.cs">
+      <DependentUpon>AuthorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BookDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BookDetails.Designer.cs">
+      <DependentUpon>BookDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoanDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoanDetails.Designer.cs">
+      <DependentUpon>LoanDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MenuMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MenuMain.Designer.cs">
       <DependentUpon>MenuMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PublisherDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PublisherDetails.Designer.cs">
+      <DependentUpon>PublisherDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StudentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentDetails.Designer.cs">
+      <DependentUpon>StudentDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AuthorDetails.resx">
+      <DependentUpon>AuthorDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BookDetails.resx">
+      <DependentUpon>BookDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoanDetails.resx">
+      <DependentUpon>LoanDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MenuMain.resx">
       <DependentUpon>MenuMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PublisherDetails.resx">
+      <DependentUpon>PublisherDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentDetails.resx">
+      <DependentUpon>StudentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -89,17 +89,58 @@ namespace Library.Presentation.Forms
             RefreshList();
         }
 
+        private bool CheckForSelectedItem()
+        {
+            if (entitiesListBox.SelectedItem != null) return true;
+            MessageBox.Show(@"No item selected", @"Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        private void CommonErrorMessage()
+        {
+            MessageBox.Show(@"Something went wrong", @"Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /* Details */
+
+        private void Details(object sender, EventArgs e)
+        {
+            if (!CheckForSelectedItem()) return;
+            switch (_option)
+            {
+                case 1:
+                    var authorDetailsWindow = new AuthorDetails(entitiesListBox.SelectedItem as Author);
+                    authorDetailsWindow.ShowDialog();
+                    break;
+                case 2:
+                    var publisherDetailsWindow = new PublisherDetails(entitiesListBox.SelectedItem as Publisher);
+                    publisherDetailsWindow.ShowDialog();
+                    break;
+                case 3:
+                    var studentDetailsWindow = new StudentDetails(entitiesListBox.SelectedItem as Student);
+                    studentDetailsWindow.ShowDialog();
+                    break;
+                case 4:
+                    var bookDetailsWindow = new BookDetails(entitiesListBox.SelectedItem as Book);
+                    bookDetailsWindow.ShowDialog();
+                    break;
+                case 5:
+                    var loanDetailsWindow = new LoanDetails(entitiesListBox.SelectedItem as Loan);
+                    loanDetailsWindow.ShowDialog();
+                    break;
+                default:
+                    CommonErrorMessage();
+                    break;
+            }
+        }
+
         /* Remove */
 
         private void Remove(object sender, System.EventArgs e)
         {
-            if (entitiesListBox.SelectedItem == null)
-            {
-                MessageBox.Show(@"No item selected", @"Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+            if (!CheckForSelectedItem()) return;
             switch (_option)
             {
                 case 1:

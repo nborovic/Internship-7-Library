@@ -134,6 +134,7 @@
             this.button9.TabIndex = 8;
             this.button9.Text = "Details";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.Details);
             // 
             // button10
             // 

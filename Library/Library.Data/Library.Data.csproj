@@ -144,6 +144,10 @@
     <Compile Include="Migrations\20190210105949_AddedMtMRelation.designer.cs">
       <DependentUpon>20190210105949_AddedMtMRelation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190210214758_AddedPreInitializedObjects.cs" />
+    <Compile Include="Migrations\20190210214758_AddedPreInitializedObjects.designer.cs">
+      <DependentUpon>20190210214758_AddedPreInitializedObjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 using System.Linq;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain.Repositories
 {
@@ -44,7 +45,7 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public Book Get(int id) => _context.Books.Find(id);
-        public List<Book> GetAll() => _context.Books.ToList();
+        public Book Get(int id) => _context.Books.Include(book => book.Loans).FirstOrDefault(book => book.Id == id);
+        public List<Book> GetAll() => _context.Books.Include(book => book.Loans).ToList();
     }
 }
