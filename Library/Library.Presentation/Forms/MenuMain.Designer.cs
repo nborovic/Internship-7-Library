@@ -112,7 +112,7 @@
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(88, 38);
             this.createButton.TabIndex = 6;
-            this.createButton.Text = "button6";
+            this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
             // 
             // detailsButton
@@ -122,7 +122,7 @@
             this.detailsButton.Name = "detailsButton";
             this.detailsButton.Size = new System.Drawing.Size(88, 38);
             this.detailsButton.TabIndex = 7;
-            this.detailsButton.Text = "button7";
+            this.detailsButton.Text = "Edit";
             this.detailsButton.UseVisualStyleBackColor = true;
             // 
             // button9
@@ -132,7 +132,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(88, 38);
             this.button9.TabIndex = 8;
-            this.button9.Text = "button8";
+            this.button9.Text = "Details";
             this.button9.UseVisualStyleBackColor = true;
             // 
             // button10
@@ -142,8 +142,9 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(88, 38);
             this.button10.TabIndex = 9;
-            this.button10.Text = "button10";
+            this.button10.Text = "Remove";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.Remove);
             // 
             // MenuMain
             // 
