@@ -4,14 +4,16 @@ using Library.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190211092620_AddedNumberOfCopiesForBooks")]
+    partial class AddedNumberOfCopiesForBooks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,9 +211,7 @@ namespace Library.Data.Migrations
 
                     b.Property<DateTime>("PickupDate");
 
-                    b.Property<DateTime?>("ReturnDate");
-
-                    b.Property<DateTime>("ReturnDeadline");
+                    b.Property<DateTime>("ReturnDate");
 
                     b.Property<int>("StudentId");
 
@@ -228,44 +228,40 @@ namespace Library.Data.Migrations
                         {
                             Id = 1,
                             BookId = 2,
-                            PickupDate = new DateTime(2019, 1, 2, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 17, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 21, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 2, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
+                            ReturnDate = new DateTime(2019, 2, 17, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             StudentId = 1
                         },
                         new
                         {
                             Id = 2,
                             BookId = 2,
-                            PickupDate = new DateTime(2019, 1, 21, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 7, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 21, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
+                            ReturnDate = new DateTime(2019, 2, 5, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             StudentId = 2
                         },
                         new
                         {
                             Id = 3,
                             BookId = 6,
-                            PickupDate = new DateTime(2019, 1, 10, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 18, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 16, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 10, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
+                            ReturnDate = new DateTime(2019, 2, 18, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             StudentId = 3
                         },
                         new
                         {
                             Id = 4,
                             BookId = 4,
-                            PickupDate = new DateTime(2019, 1, 4, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 22, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 26, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 4, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
+                            ReturnDate = new DateTime(2019, 2, 22, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             StudentId = 4
                         },
                         new
                         {
                             Id = 5,
                             BookId = 7,
-                            PickupDate = new DateTime(2019, 1, 31, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 12, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 16, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 31, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
+                            ReturnDate = new DateTime(2019, 2, 12, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             StudentId = 5
                         });
                 });
@@ -338,7 +334,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Birthdate = new DateTime(2007, 2, 11, 11, 16, 16, 785, DateTimeKind.Local).AddTicks(2839),
+                            Birthdate = new DateTime(2007, 2, 11, 10, 26, 19, 626, DateTimeKind.Local).AddTicks(2322),
                             Class = "6.B",
                             FirstName = "Student",
                             Gender = 0,
@@ -347,7 +343,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 2,
-                            Birthdate = new DateTime(2005, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2005, 2, 11, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             Class = "8.A",
                             FirstName = "Student",
                             Gender = 0,
@@ -356,7 +352,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Birthdate = new DateTime(2007, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2007, 2, 11, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             Class = "6.C",
                             FirstName = "Student",
                             Gender = 1,
@@ -365,7 +361,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 4,
-                            Birthdate = new DateTime(2008, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2008, 2, 11, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             Class = "5.A",
                             FirstName = "Student",
                             Gender = 0,
@@ -374,7 +370,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 5,
-                            Birthdate = new DateTime(2006, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2006, 2, 11, 10, 26, 19, 629, DateTimeKind.Local).AddTicks(2316),
                             Class = "7.B",
                             FirstName = "Student",
                             Gender = 1,

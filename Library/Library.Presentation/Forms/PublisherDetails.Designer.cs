@@ -70,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 363);
+            this.ClientSize = new System.Drawing.Size(345, 363);
             this.Controls.Add(this.authorBooks);
             this.Controls.Add(this.publisherName);
             this.Controls.Add(this.booksListBox);

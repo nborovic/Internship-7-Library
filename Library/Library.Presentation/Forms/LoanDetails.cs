@@ -28,7 +28,6 @@ namespace Library.Presentation.Forms
             studentName.Text = _selectedLoan.Student.FirstName + @" " + _selectedLoan.Student.LastName;
             bookName.Text = _selectedLoan.Book.Name;
             pickupDateLabel.Text += _selectedLoan.PickupDate.ToString("d");
-            returnDateLabel.Text += _selectedLoan.ReturnDate.ToString("d");
         }
     }
 }

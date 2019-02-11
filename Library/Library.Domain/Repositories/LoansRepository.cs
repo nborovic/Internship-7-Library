@@ -32,16 +32,6 @@ namespace Library.Domain.Repositories
 
         public void Edit(Loan editedLoan)
         {
-            var loanToEdit = _context.Loans.FirstOrDefault(loan => loan.Id == editedLoan.Id);
-            if (loanToEdit == null) return;
-
-            loanToEdit.Book = editedLoan.Book;
-            loanToEdit.Student = editedLoan.Student;
-            loanToEdit.PickupDate = editedLoan.PickupDate;
-            loanToEdit.ReturnDate = editedLoan.ReturnDate;
-            loanToEdit.BookId = editedLoan.BookId;
-            loanToEdit.StudentId = editedLoan.StudentId;
-
             _context.SaveChanges();
         }
 

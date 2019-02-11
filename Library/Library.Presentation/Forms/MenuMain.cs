@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
@@ -53,8 +54,7 @@ namespace Library.Presentation.Forms
                     _loansRepository.GetAll().ForEach(loan => entitiesListBox.Items.Add(loan));
                     break;
                 default:
-                    MessageBox.Show(@"Something went wrong", @"Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CommonErrorMessage();
                     break;
             }
         }

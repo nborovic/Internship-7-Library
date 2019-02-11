@@ -45,7 +45,7 @@
             this.entitiesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entitiesListBox.FormattingEnabled = true;
             this.entitiesListBox.ItemHeight = 20;
-            this.entitiesListBox.Location = new System.Drawing.Point(38, 85);
+            this.entitiesListBox.Location = new System.Drawing.Point(38, 67);
             this.entitiesListBox.Name = "entitiesListBox";
             this.entitiesListBox.Size = new System.Drawing.Size(473, 224);
             this.entitiesListBox.TabIndex = 0;
@@ -53,7 +53,7 @@
             // authorsButton
             // 
             this.authorsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.authorsButton.Location = new System.Drawing.Point(38, 41);
+            this.authorsButton.Location = new System.Drawing.Point(38, 23);
             this.authorsButton.Name = "authorsButton";
             this.authorsButton.Size = new System.Drawing.Size(88, 38);
             this.authorsButton.TabIndex = 1;
@@ -64,7 +64,7 @@
             // publishersButton
             // 
             this.publishersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.publishersButton.Location = new System.Drawing.Point(132, 41);
+            this.publishersButton.Location = new System.Drawing.Point(132, 23);
             this.publishersButton.Name = "publishersButton";
             this.publishersButton.Size = new System.Drawing.Size(97, 38);
             this.publishersButton.TabIndex = 2;
@@ -75,7 +75,7 @@
             // studentsButton
             // 
             this.studentsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studentsButton.Location = new System.Drawing.Point(235, 41);
+            this.studentsButton.Location = new System.Drawing.Point(235, 23);
             this.studentsButton.Name = "studentsButton";
             this.studentsButton.Size = new System.Drawing.Size(88, 38);
             this.studentsButton.TabIndex = 3;
@@ -86,7 +86,7 @@
             // booksButton
             // 
             this.booksButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.booksButton.Location = new System.Drawing.Point(329, 41);
+            this.booksButton.Location = new System.Drawing.Point(329, 23);
             this.booksButton.Name = "booksButton";
             this.booksButton.Size = new System.Drawing.Size(88, 38);
             this.booksButton.TabIndex = 4;
@@ -97,7 +97,7 @@
             // loansButton
             // 
             this.loansButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loansButton.Location = new System.Drawing.Point(423, 41);
+            this.loansButton.Location = new System.Drawing.Point(423, 23);
             this.loansButton.Name = "loansButton";
             this.loansButton.Size = new System.Drawing.Size(88, 38);
             this.loansButton.TabIndex = 5;
@@ -108,7 +108,7 @@
             // createButton
             // 
             this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.Location = new System.Drawing.Point(38, 315);
+            this.createButton.Location = new System.Drawing.Point(38, 297);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(88, 38);
             this.createButton.TabIndex = 6;
@@ -118,7 +118,7 @@
             // detailsButton
             // 
             this.detailsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detailsButton.Location = new System.Drawing.Point(164, 315);
+            this.detailsButton.Location = new System.Drawing.Point(164, 297);
             this.detailsButton.Name = "detailsButton";
             this.detailsButton.Size = new System.Drawing.Size(88, 38);
             this.detailsButton.TabIndex = 7;
@@ -128,7 +128,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(287, 315);
+            this.button9.Location = new System.Drawing.Point(287, 297);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(88, 38);
             this.button9.TabIndex = 8;
@@ -139,7 +139,7 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(414, 315);
+            this.button10.Location = new System.Drawing.Point(414, 297);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(88, 38);
             this.button10.TabIndex = 9;
@@ -151,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 392);
+            this.ClientSize = new System.Drawing.Size(555, 352);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.detailsButton);

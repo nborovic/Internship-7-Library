@@ -148,6 +148,22 @@
     <Compile Include="Migrations\20190210214758_AddedPreInitializedObjects.designer.cs">
       <DependentUpon>20190210214758_AddedPreInitializedObjects.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190211092620_AddedNumberOfCopiesForBooks.cs" />
+    <Compile Include="Migrations\20190211092620_AddedNumberOfCopiesForBooks.designer.cs">
+      <DependentUpon>20190211092620_AddedNumberOfCopiesForBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190211100201_AddedLoanReturnDeadline.cs" />
+    <Compile Include="Migrations\20190211100201_AddedLoanReturnDeadline.designer.cs">
+      <DependentUpon>20190211100201_AddedLoanReturnDeadline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190211101257_ChangedSeedData.cs" />
+    <Compile Include="Migrations\20190211101257_ChangedSeedData.designer.cs">
+      <DependentUpon>20190211101257_ChangedSeedData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190211101617_ChangedSeedData2.cs" />
+    <Compile Include="Migrations\20190211101617_ChangedSeedData2.designer.cs">
+      <DependentUpon>20190211101617_ChangedSeedData2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

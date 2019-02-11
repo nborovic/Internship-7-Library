@@ -33,6 +33,7 @@
             this.numberOfPagesLabel = new System.Windows.Forms.Label();
             this.authorLabel = new System.Windows.Forms.Label();
             this.publisherLabel = new System.Windows.Forms.Label();
+            this.rentedLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bookName
@@ -91,11 +92,22 @@
             this.publisherLabel.TabIndex = 9;
             this.publisherLabel.Text = "Publisher: ";
             // 
+            // rentedLabel
+            // 
+            this.rentedLabel.AutoSize = true;
+            this.rentedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rentedLabel.Location = new System.Drawing.Point(65, 153);
+            this.rentedLabel.Name = "rentedLabel";
+            this.rentedLabel.Size = new System.Drawing.Size(70, 20);
+            this.rentedLabel.TabIndex = 10;
+            this.rentedLabel.Text = "Rented: ";
+            // 
             // BookDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 171);
+            this.ClientSize = new System.Drawing.Size(438, 184);
+            this.Controls.Add(this.rentedLabel);
             this.Controls.Add(this.publisherLabel);
             this.Controls.Add(this.authorLabel);
             this.Controls.Add(this.numberOfPagesLabel);
@@ -115,5 +127,6 @@
         private System.Windows.Forms.Label numberOfPagesLabel;
         private System.Windows.Forms.Label authorLabel;
         private System.Windows.Forms.Label publisherLabel;
+        private System.Windows.Forms.Label rentedLabel;
     }
 }

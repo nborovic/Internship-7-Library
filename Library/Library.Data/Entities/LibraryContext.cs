@@ -27,16 +27,16 @@ namespace Library.Data.Entities
             modelBuilder.Entity<Author>().HasData(new Author { Id = 4, FirstName = "Autor", LastName = "Četvrti" });
             modelBuilder.Entity<Author>().HasData(new Author { Id = 5, FirstName = "Autor", LastName = "Peti" });
 
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 1, Name = "Knjiga Prva", NumberOfPages = 115, Genre = "sci-fi", AuthorId = 1, PublisherId = 5 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 2, Name = "Knjiga Druga", NumberOfPages = 55, Genre = "action", AuthorId = 2, PublisherId = 4 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 3, Name = "Knjiga Treća", NumberOfPages = 315, Genre = "drama", AuthorId = 3, PublisherId = 3 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 4, Name = "Knjiga Četvrta", NumberOfPages = 125, Genre = "drama", AuthorId = 4, PublisherId = 2 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 5, Name = "Knjiga Peta", NumberOfPages = 135, Genre = "horror", AuthorId = 5, PublisherId = 1 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 6, Name = "Knjiga Šesta", NumberOfPages = 415, Genre = "sci-fi", AuthorId = 1, PublisherId = 5 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 7, Name = "Knjiga Sedma", NumberOfPages = 105, Genre = "sci-fi", AuthorId = 2, PublisherId = 4 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 8, Name = "Knjiga Osma", NumberOfPages = 55, Genre = "horror", AuthorId = 3, PublisherId = 3 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 9, Name = "Knjiga Deveta", NumberOfPages = 422, Genre = "action", AuthorId = 4, PublisherId = 2 });
-            modelBuilder.Entity<Book>().HasData(new Book { Id = 10, Name = "Knjiga Deseta", NumberOfPages = 88, Genre = "action", AuthorId = 5, PublisherId = 1 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 1, Name = "Knjiga Prva", NumberOfPages = 115, NumberOfCopies = 15, Genre = "sci-fi", AuthorId = 1, PublisherId = 5 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 2, Name = "Knjiga Druga", NumberOfPages = 55, NumberOfCopies = 21, Genre = "action", AuthorId = 2, PublisherId = 4 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 3, Name = "Knjiga Treća", NumberOfPages = 315, NumberOfCopies = 11, Genre = "drama", AuthorId = 3, PublisherId = 3 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 4, Name = "Knjiga Četvrta", NumberOfPages = 125, NumberOfCopies = 14, Genre = "drama", AuthorId = 4, PublisherId = 2 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 5, Name = "Knjiga Peta", NumberOfPages = 135, NumberOfCopies = 12, Genre = "horror", AuthorId = 5, PublisherId = 1 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 6, Name = "Knjiga Šesta", NumberOfPages = 415, NumberOfCopies = 18, Genre = "sci-fi", AuthorId = 1, PublisherId = 5 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 7, Name = "Knjiga Sedma", NumberOfPages = 105, NumberOfCopies = 16, Genre = "sci-fi", AuthorId = 2, PublisherId = 4 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 8, Name = "Knjiga Osma", NumberOfPages = 55, NumberOfCopies = 21, Genre = "horror", AuthorId = 3, PublisherId = 3 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 9, Name = "Knjiga Deveta", NumberOfPages = 422, NumberOfCopies = 26, Genre = "action", AuthorId = 4, PublisherId = 2 });
+            modelBuilder.Entity<Book>().HasData(new Book { Id = 10, Name = "Knjiga Deseta", NumberOfPages = 88, NumberOfCopies = 38, Genre = "action", AuthorId = 5, PublisherId = 1 });
 
             modelBuilder.Entity<Publisher>().HasData(new Publisher { Id = 1, Name = "Izdavač Prvi" });
             modelBuilder.Entity<Publisher>().HasData(new Publisher { Id = 2, Name = "Izdavač Drugi" });
@@ -50,11 +50,11 @@ namespace Library.Data.Entities
             modelBuilder.Entity<Student>().HasData(new Student { Id = 4, FirstName = "Student", LastName = "Četvrti", Birthdate = DateTime.Now.AddYears(-11), Class = "5.A", Gender = Gender.Male });
             modelBuilder.Entity<Student>().HasData(new Student { Id = 5, FirstName = "Student", LastName = "Peti", Birthdate = DateTime.Now.AddYears(-13), Class = "7.B", Gender = Gender.Female });
 
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 1, StudentId = 1, BookId = 2, PickupDate = DateTime.Now.AddDays(-40), ReturnDate = DateTime.Now.AddDays(6) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 2, StudentId = 2, BookId = 2, PickupDate = DateTime.Now.AddDays(-21), ReturnDate = DateTime.Now.AddDays(-6) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 3, StudentId = 3, BookId = 6, PickupDate = DateTime.Now.AddDays(-32), ReturnDate = DateTime.Now.AddDays(7) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 4, StudentId = 4, BookId = 4, PickupDate = DateTime.Now.AddDays(-38), ReturnDate = DateTime.Now.AddDays(11) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 5, StudentId = 5, BookId = 7, PickupDate = DateTime.Now.AddDays(-11), ReturnDate = DateTime.Now.AddDays(1) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 1, StudentId = 1, BookId = 2, PickupDate = DateTime.Now.AddDays(-40), ReturnDeadline = DateTime.Now.AddDays(10), ReturnDate = DateTime.Now.AddDays(6) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 2, StudentId = 2, BookId = 2, PickupDate = DateTime.Now.AddDays(-21), ReturnDeadline = DateTime.Now.AddDays(-4) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 3, StudentId = 3, BookId = 6, PickupDate = DateTime.Now.AddDays(-32), ReturnDeadline = DateTime.Now.AddDays(5), ReturnDate = DateTime.Now.AddDays(7) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 4, StudentId = 4, BookId = 4, PickupDate = DateTime.Now.AddDays(-38), ReturnDeadline = DateTime.Now.AddDays(15), ReturnDate = DateTime.Now.AddDays(11) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 5, StudentId = 5, BookId = 7, PickupDate = DateTime.Now.AddDays(-11), ReturnDeadline = DateTime.Now.AddDays(5), ReturnDate = DateTime.Now.AddDays(1) });
 
             modelBuilder.Entity<Loan>()
                 .HasOne(loan => loan.Book)

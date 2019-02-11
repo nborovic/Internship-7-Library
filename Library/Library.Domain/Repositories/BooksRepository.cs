@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace Library.Domain.Repositories
 {
@@ -41,11 +44,12 @@ namespace Library.Domain.Repositories
             bookToEdit.Publisher = editedBook.Publisher;
             bookToEdit.AuthorId = editedBook.AuthorId;
             bookToEdit.PublisherId = editedBook.PublisherId;
+            bookToEdit.NumberOfCopies = editedBook.NumberOfCopies;
 
             _context.SaveChanges();
         }
 
         public Book Get(int id) => _context.Books.Include(book => book.Loans).FirstOrDefault(book => book.Id == id);
-        public List<Book> GetAll() => _context.Books.Include(book => book.Loans).ToList();
+        public List<Book> GetAll() => _context.Books.Include(book => book.Loans).Include(book => book.Author).Include(book => book.Publisher).ToList();
     }
 }

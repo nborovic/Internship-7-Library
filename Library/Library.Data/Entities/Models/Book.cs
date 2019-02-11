@@ -8,6 +8,7 @@ namespace Library.Data.Entities.Models
         public int Id { get; set; }
         [MaxLength(50)] public string Name { get; set; }
         public int NumberOfPages { get; set; }
+        public int NumberOfCopies { get; set; }
         [MaxLength(50)] public string Genre { get; set; }
         public Author Author { get; set; }
         public int AuthorId { get; set; }
@@ -17,7 +18,7 @@ namespace Library.Data.Entities.Models
 
         public override string ToString()
         {
-            return $"{Id} | {Name} | {Author.FirstName} {Author.LastName} | {NumberOfPages}";
+            return $"{Id} | {Name} | {Author.LastName}";
         }
     }
 }
