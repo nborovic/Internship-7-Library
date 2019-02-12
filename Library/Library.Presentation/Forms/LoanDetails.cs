@@ -27,7 +27,9 @@ namespace Library.Presentation.Forms
         {
             studentName.Text = _selectedLoan.Student.FirstName + @" " + _selectedLoan.Student.LastName;
             bookName.Text = _selectedLoan.Book.Name;
-            pickupDateLabel.Text += _selectedLoan.PickupDate.ToString("d");
+            pickupDateLabel.Text = $@"Pickup date: {_selectedLoan.PickupDate:d}";
+            returnDeadlineLabel.Text = $@"Return deadline: {_selectedLoan.ReturnDeadline:d}";
+            returnDateLabel.Text = _selectedLoan.ReturnDate == null ? @"Return date: Not returned" : $@"Return date: {_selectedLoan.ReturnDate:d}";
         }
     }
 }

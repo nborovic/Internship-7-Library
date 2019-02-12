@@ -58,6 +58,24 @@
     <Compile Include="Forms\BookDetails.Designer.cs">
       <DependentUpon>BookDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CreateEditAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateEditAuthor.Designer.cs">
+      <DependentUpon>CreateEditAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateEditPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateEditPublisher.Designer.cs">
+      <DependentUpon>CreateEditPublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateEditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateEditStudent.Designer.cs">
+      <DependentUpon>CreateEditStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoanDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +107,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BookDetails.resx">
       <DependentUpon>BookDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateEditAuthor.resx">
+      <DependentUpon>CreateEditAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateEditPublisher.resx">
+      <DependentUpon>CreateEditPublisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateEditStudent.resx">
+      <DependentUpon>CreateEditStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoanDetails.resx">
       <DependentUpon>LoanDetails.cs</DependentUpon>

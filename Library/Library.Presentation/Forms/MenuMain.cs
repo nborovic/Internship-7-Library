@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
@@ -159,8 +158,33 @@ namespace Library.Presentation.Forms
                     _loansRepository.Remove(entitiesListBox.SelectedItem as Loan);
                     break;
                 default:
-                    MessageBox.Show(@"Something went wrong", @"Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CommonErrorMessage();
+                    break;
+            }
+
+            RefreshList();
+        }
+
+        /* Create */
+
+        private void Create(object sender, EventArgs e)
+        {
+            switch (_option)
+            {
+                case 1:
+                    var createAuthorWindow = new CreateEditAuthor();
+                    createAuthorWindow.ShowDialog();
+                    break;
+                case 2:
+                    var createPublisherWindow = new CreateEditPublisher();
+                    createPublisherWindow.ShowDialog();
+                    break;
+                case 3:
+                    var createStudentWindow = new CreateEditStudent();
+                    createStudentWindow.ShowDialog();
+                    break;
+                default:
+                    CommonErrorMessage();
                     break;
             }
 

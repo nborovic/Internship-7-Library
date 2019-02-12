@@ -114,6 +114,7 @@
             this.createButton.TabIndex = 6;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.Create);
             // 
             // detailsButton
             // 
@@ -163,7 +164,7 @@
             this.Controls.Add(this.authorsButton);
             this.Controls.Add(this.entitiesListBox);
             this.Name = "MenuMain";
-            this.Text = "MenuMain";
+            this.Text = "Menu";
             this.ResumeLayout(false);
 
         }

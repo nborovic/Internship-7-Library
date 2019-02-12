@@ -32,6 +32,7 @@
             this.bookName = new System.Windows.Forms.TextBox();
             this.returnDateLabel = new System.Windows.Forms.Label();
             this.pickupDateLabel = new System.Windows.Forms.Label();
+            this.returnDeadlineLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // studentName
@@ -64,7 +65,7 @@
             // 
             this.returnDateLabel.AutoSize = true;
             this.returnDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnDateLabel.Location = new System.Drawing.Point(45, 110);
+            this.returnDateLabel.Location = new System.Drawing.Point(45, 129);
             this.returnDateLabel.Name = "returnDateLabel";
             this.returnDateLabel.Size = new System.Drawing.Size(102, 20);
             this.returnDateLabel.TabIndex = 8;
@@ -80,11 +81,22 @@
             this.pickupDateLabel.TabIndex = 9;
             this.pickupDateLabel.Text = "Pickup date: ";
             // 
+            // returnDeadlineLabel
+            // 
+            this.returnDeadlineLabel.AutoSize = true;
+            this.returnDeadlineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnDeadlineLabel.Location = new System.Drawing.Point(45, 110);
+            this.returnDeadlineLabel.Name = "returnDeadlineLabel";
+            this.returnDeadlineLabel.Size = new System.Drawing.Size(130, 20);
+            this.returnDeadlineLabel.TabIndex = 10;
+            this.returnDeadlineLabel.Text = "Return deadline: ";
+            // 
             // LoanDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 160);
+            this.ClientSize = new System.Drawing.Size(399, 185);
+            this.Controls.Add(this.returnDeadlineLabel);
             this.Controls.Add(this.pickupDateLabel);
             this.Controls.Add(this.returnDateLabel);
             this.Controls.Add(this.bookName);
@@ -102,5 +114,6 @@
         private System.Windows.Forms.TextBox bookName;
         private System.Windows.Forms.Label returnDateLabel;
         private System.Windows.Forms.Label pickupDateLabel;
+        private System.Windows.Forms.Label returnDeadlineLabel;
     }
 }
