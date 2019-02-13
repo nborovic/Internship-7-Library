@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Library.Data.Entities.Models
 {
@@ -19,6 +21,11 @@ namespace Library.Data.Entities.Models
         public override string ToString()
         {
             return $"{Id} | {Name} | {Author.LastName}";
+        }
+
+        public int GetNumberOfTakenCopies()
+        {
+            return Loans.Count(loan => loan.ReturnDate == null);
         }
     }
 }

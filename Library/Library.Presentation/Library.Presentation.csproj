@@ -46,40 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AuthorDetails.cs">
+    <Compile Include="Forms\AuthorForms\AuthorDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AuthorDetails.Designer.cs">
+    <Compile Include="Forms\AuthorForms\AuthorDetails.Designer.cs">
       <DependentUpon>AuthorDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BookDetails.cs">
+    <Compile Include="Forms\BookForms\BookDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BookDetails.Designer.cs">
+    <Compile Include="Forms\BookForms\BookDetails.Designer.cs">
       <DependentUpon>BookDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateEditAuthor.cs">
+    <Compile Include="Forms\AuthorForms\CreateEditAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateEditAuthor.Designer.cs">
+    <Compile Include="Forms\AuthorForms\CreateEditAuthor.Designer.cs">
       <DependentUpon>CreateEditAuthor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateEditPublisher.cs">
+    <Compile Include="Forms\BookForms\CreateEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateEditPublisher.Designer.cs">
+    <Compile Include="Forms\BookForms\CreateEditBook.Designer.cs">
+      <DependentUpon>CreateEditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoanForms\CreateEditLoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoanForms\CreateEditLoan.Designer.cs">
+      <DependentUpon>CreateEditLoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PublisherForms\CreateEditPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PublisherForms\CreateEditPublisher.Designer.cs">
       <DependentUpon>CreateEditPublisher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateEditStudent.cs">
+    <Compile Include="Forms\StudentForms\CreateEditStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateEditStudent.Designer.cs">
+    <Compile Include="Forms\StudentForms\CreateEditStudent.Designer.cs">
       <DependentUpon>CreateEditStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LoanDetails.cs">
+    <Compile Include="Forms\LoanForms\LoanDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoanDetails.Designer.cs">
+    <Compile Include="Forms\LoanForms\LoanDetails.Designer.cs">
       <DependentUpon>LoanDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MenuMain.cs">
@@ -88,45 +100,51 @@
     <Compile Include="Forms\MenuMain.Designer.cs">
       <DependentUpon>MenuMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PublisherDetails.cs">
+    <Compile Include="Forms\PublisherForms\PublisherDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PublisherDetails.Designer.cs">
+    <Compile Include="Forms\PublisherForms\PublisherDetails.Designer.cs">
       <DependentUpon>PublisherDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StudentDetails.cs">
+    <Compile Include="Forms\StudentForms\StudentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\StudentDetails.Designer.cs">
+    <Compile Include="Forms\StudentForms\StudentDetails.Designer.cs">
       <DependentUpon>StudentDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AuthorDetails.resx">
+    <EmbeddedResource Include="Forms\AuthorForms\AuthorDetails.resx">
       <DependentUpon>AuthorDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BookDetails.resx">
+    <EmbeddedResource Include="Forms\BookForms\BookDetails.resx">
       <DependentUpon>BookDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateEditAuthor.resx">
+    <EmbeddedResource Include="Forms\AuthorForms\CreateEditAuthor.resx">
       <DependentUpon>CreateEditAuthor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateEditPublisher.resx">
+    <EmbeddedResource Include="Forms\BookForms\CreateEditBook.resx">
+      <DependentUpon>CreateEditBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoanForms\CreateEditLoan.resx">
+      <DependentUpon>CreateEditLoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PublisherForms\CreateEditPublisher.resx">
       <DependentUpon>CreateEditPublisher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateEditStudent.resx">
+    <EmbeddedResource Include="Forms\StudentForms\CreateEditStudent.resx">
       <DependentUpon>CreateEditStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoanDetails.resx">
+    <EmbeddedResource Include="Forms\LoanForms\LoanDetails.resx">
       <DependentUpon>LoanDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MenuMain.resx">
       <DependentUpon>MenuMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PublisherDetails.resx">
+    <EmbeddedResource Include="Forms\PublisherForms\PublisherDetails.resx">
       <DependentUpon>PublisherDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StudentDetails.resx">
+    <EmbeddedResource Include="Forms\StudentForms\StudentDetails.resx">
       <DependentUpon>StudentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

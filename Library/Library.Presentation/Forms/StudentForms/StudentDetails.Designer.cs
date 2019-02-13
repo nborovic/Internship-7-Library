@@ -152,7 +152,7 @@
             this.Controls.Add(this.studentClass);
             this.Controls.Add(this.studentFullName);
             this.Name = "StudentDetails";
-            this.Text = "StudentDetails";
+            this.Text = "Student";
             this.ResumeLayout(false);
             this.PerformLayout();
 

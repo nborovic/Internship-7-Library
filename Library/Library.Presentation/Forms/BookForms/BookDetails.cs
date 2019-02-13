@@ -27,7 +27,7 @@ namespace Library.Presentation.Forms
             numberOfPagesLabel.Text += _selectedBook.NumberOfPages;
             authorLabel.Text += _selectedBook.Author.FirstName + @" " +_selectedBook.Author.LastName;
             publisherLabel.Text += _selectedBook.Publisher.Name;
-            rentedLabel.Text += $@"{_selectedBook.Loans.Count(loan => loan.ReturnDate - DateTime.Now > TimeSpan.Zero)}/{_selectedBook.NumberOfCopies}";
+            rentedLabel.Text += $@"{_selectedBook.GetNumberOfTakenCopies()}/{_selectedBook.NumberOfCopies}";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Presentation.Forms.LoanForms;
 
 namespace Library.Presentation.Forms
 {
@@ -182,6 +183,14 @@ namespace Library.Presentation.Forms
                 case 3:
                     var createStudentWindow = new CreateEditStudent();
                     createStudentWindow.ShowDialog();
+                    break;
+                case 4:
+                    var createBookWindow = new CreateEditBook();
+                    createBookWindow.ShowDialog();
+                    break;
+                case 5:
+                    var createLoanWindow = new CreateEditLoan();
+                    createLoanWindow.ShowDialog();
                     break;
                 default:
                     CommonErrorMessage();
