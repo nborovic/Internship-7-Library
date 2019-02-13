@@ -4,6 +4,7 @@ using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 using Library.Presentation.Forms.LoanForms;
+using Library.Presentation.Forms.PublisherForms;
 
 namespace Library.Presentation.Forms
 {
@@ -97,7 +98,7 @@ namespace Library.Presentation.Forms
             return false;
         }
 
-        private void CommonErrorMessage()
+        private static void CommonErrorMessage()
         {
             MessageBox.Show(@"Something went wrong", @"Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -191,6 +192,34 @@ namespace Library.Presentation.Forms
                 case 5:
                     var createLoanWindow = new CreateEditLoan();
                     createLoanWindow.ShowDialog();
+                    break;
+                default:
+                    CommonErrorMessage();
+                    break;
+            }
+
+            RefreshList();
+        }
+
+        /* Edit */
+
+        private void Edit(object sender, EventArgs e)
+        {
+            if (!CheckForSelectedItem()) return;
+
+            switch (_option)
+            {
+                case 1:
+                    var editAuthorWindow = new CreateEditAuthor(entitiesListBox.SelectedItem as Author);
+                    editAuthorWindow.ShowDialog();
+                    break;
+                case 2:
+                    var editPublisherWindow = new CreateEditPublisher(entitiesListBox.SelectedItem as Publisher);
+                    editPublisherWindow.ShowDialog();
+                    break;
+                case 3:
+                    var editStudentWindow = new CreateEditStudent(entitiesListBox.SelectedItem as Student);
+                    editStudentWindow.ShowDialog();
                     break;
                 default:
                     CommonErrorMessage();

@@ -10,6 +10,7 @@ namespace Library.Presentation.Forms
     public partial class CreateEditStudent : Form
     {
         private readonly StudentsRepository _studentsRepository;
+        private readonly Student _studentToEdit;
 
         public CreateEditStudent()
         {
@@ -17,9 +18,34 @@ namespace Library.Presentation.Forms
 
             var context = new LibraryContext();
             _studentsRepository = new StudentsRepository(context);
-            birthdayDatePicker.Value = DateTime.Now.AddYears(-5);
 
+            createEditButton.Text = @"Create";
+            birthdayDatePicker.Value = DateTime.Now.AddYears(-5);
             RefreshClasses();
+        }
+
+        public CreateEditStudent(Student studentToEdit)
+        {
+            InitializeComponent();
+
+            var context = new LibraryContext();
+            _studentsRepository = new StudentsRepository(context);
+            _studentToEdit = studentToEdit;
+
+            createEditButton.Text = @"Edit";
+            birthdayDatePicker.Value = DateTime.Now.AddYears(-5);
+            RefreshClasses();
+            FillInputFields();
+        }
+
+        private void FillInputFields()
+        {
+            firstNameTextBox.Text = _studentToEdit.FirstName;
+            lastNameTextBox.Text = _studentToEdit.LastName;
+            classComboBox.SelectedItem = _studentToEdit.Class;
+            birthdayDatePicker.Value = _studentToEdit.Birthdate;
+            maleRadioButton.Checked = _studentToEdit.Gender == Gender.Male;
+            femaleRadioButton.Checked = _studentToEdit.Gender == Gender.Female;
         }
 
         private void RefreshClasses()
@@ -55,21 +81,34 @@ namespace Library.Presentation.Forms
             return false;
         }
 
-        private void Create(object sender, EventArgs e)
+        private void CreateEdit(object sender, EventArgs e)
         {
             if (!CheckInputFields()) return;
 
-            var newStudent = new Student
+            if (_studentToEdit == null)
             {
-                FirstName = firstNameTextBox.Text,
-                LastName = lastNameTextBox.Text,
-                Birthdate = birthdayDatePicker.Value.Date,
-                Class = classComboBox.SelectedItem.ToString(),
-                Gender = (maleRadioButton.Checked) ? Gender.Male : Gender.Female
+                var newStudent = new Student
+                {
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text,
+                    Birthdate = birthdayDatePicker.Value.Date,
+                    Class = classComboBox.SelectedItem.ToString(),
+                    Gender = (maleRadioButton.Checked) ? Gender.Male : Gender.Female
+                };
 
-            };
+                _studentsRepository.Add(newStudent);
+            }
+            else
+            {
+                _studentToEdit.FirstName = firstNameTextBox.Text;
+                _studentToEdit.LastName = lastNameTextBox.Text;
+                _studentToEdit.Birthdate = birthdayDatePicker.Value.Date;
+                _studentToEdit.Gender = (maleRadioButton.Checked) ? Gender.Male : Gender.Female;
+                _studentToEdit.Class = classComboBox.SelectedItem.ToString();
 
-            _studentsRepository.Add(newStudent);
+                _studentsRepository.Edit(_studentToEdit);
+            }
+
             Close();
         }
     }

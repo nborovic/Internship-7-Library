@@ -1,4 +1,4 @@
-﻿namespace Library.Presentation.Forms
+﻿namespace Library.Presentation.Forms.PublisherForms
 {
     partial class CreateEditPublisher
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.createButton = new System.Windows.Forms.Button();
+            this.createEditButton = new System.Windows.Forms.Button();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -43,15 +43,15 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Name";
             // 
-            // createButton
+            // createEditButton
             // 
-            this.createButton.Location = new System.Drawing.Point(64, 60);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(85, 25);
-            this.createButton.TabIndex = 6;
-            this.createButton.Text = "Create";
-            this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.Create);
+            this.createEditButton.Location = new System.Drawing.Point(64, 60);
+            this.createEditButton.Name = "createEditButton";
+            this.createEditButton.Size = new System.Drawing.Size(85, 25);
+            this.createEditButton.TabIndex = 6;
+            this.createEditButton.Text = "Create";
+            this.createEditButton.UseVisualStyleBackColor = true;
+            this.createEditButton.Click += new System.EventHandler(this.CreateEdit);
             // 
             // nameTextBox
             // 
@@ -66,7 +66,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(226, 103);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.createButton);
+            this.Controls.Add(this.createEditButton);
             this.Controls.Add(this.nameTextBox);
             this.Name = "CreateEditPublisher";
             this.Text = "Publisher";
@@ -78,7 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button createEditButton;
         private System.Windows.Forms.TextBox nameTextBox;
     }
 }

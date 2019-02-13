@@ -32,6 +32,15 @@ namespace Library.Domain.Repositories
 
         public void Edit(Loan editedLoan)
         {
+            var loanToEdit = _context.Loans.Find(editedLoan.Id);
+            if (loanToEdit == null) return;
+
+            loanToEdit.BookId = editedLoan.BookId;
+            loanToEdit.StudentId = editedLoan.StudentId;
+            loanToEdit.PickupDate = editedLoan.PickupDate;
+            loanToEdit.ReturnDeadline = editedLoan.ReturnDeadline;
+            loanToEdit.ReturnDate = editedLoan.ReturnDate;
+
             _context.SaveChanges();
         }
 

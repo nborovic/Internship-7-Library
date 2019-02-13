@@ -125,6 +125,7 @@
             this.detailsButton.TabIndex = 7;
             this.detailsButton.Text = "Edit";
             this.detailsButton.UseVisualStyleBackColor = true;
+            this.detailsButton.Click += new System.EventHandler(this.Edit);
             // 
             // button9
             // 

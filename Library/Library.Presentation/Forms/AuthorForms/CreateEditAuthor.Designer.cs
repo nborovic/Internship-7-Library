@@ -30,7 +30,7 @@
         {
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
-            this.createButton = new System.Windows.Forms.Button();
+            this.createEditButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -49,15 +49,15 @@
             this.lastNameTextBox.Size = new System.Drawing.Size(173, 20);
             this.lastNameTextBox.TabIndex = 1;
             // 
-            // createButton
+            // createEditButton
             // 
-            this.createButton.Location = new System.Drawing.Point(83, 99);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(87, 23);
-            this.createButton.TabIndex = 3;
-            this.createButton.Text = "Create";
-            this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.Create);
+            this.createEditButton.Location = new System.Drawing.Point(83, 99);
+            this.createEditButton.Name = "createEditButton";
+            this.createEditButton.Size = new System.Drawing.Size(87, 23);
+            this.createEditButton.TabIndex = 3;
+            this.createEditButton.Text = "Create";
+            this.createEditButton.UseVisualStyleBackColor = true;
+            this.createEditButton.Click += new System.EventHandler(this.CreateEdit);
             // 
             // label1
             // 
@@ -84,7 +84,7 @@
             this.ClientSize = new System.Drawing.Size(257, 143);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.createButton);
+            this.Controls.Add(this.createEditButton);
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Name = "CreateEditAuthor";
@@ -98,7 +98,7 @@
 
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox lastNameTextBox;
-        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Button createEditButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }

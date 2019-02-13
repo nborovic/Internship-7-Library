@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
@@ -25,12 +27,21 @@ namespace Library.Presentation.Forms
 
         private void RefreshData()
         {
-            _currentLoan = _selectedStudent.Loans.FirstOrDefault(loan => loan.ReturnDate == null);
+            _currentLoan = null;
+
+            // Didn't use FirstOrDefault because I need to track current loan in Edit() function, so that I don't have 2 trackings for the same id
+            _selectedStudent.Loans.ToList().ForEach(loan =>
+            {
+                if (loan.ReturnDate == null)
+                    _currentLoan = loan;
+            });
 
             studentFullName.Text = _selectedStudent.FirstName + @" " + _selectedStudent.LastName;
             studentClass.Text = _selectedStudent.Class;
             birthdateLabel.Text = $@"Birthday: {_selectedStudent.Birthdate:d}";
             genderLabel.Text = $@"Gender: {_selectedStudent.Gender}";
+            loansListBox.Items.Clear();
+
             _selectedStudent.Loans.ToList().ForEach(loan =>
             {
                 if(loan.ReturnDate != null)
@@ -56,6 +67,7 @@ namespace Library.Presentation.Forms
             var dialogResult = MessageBox.Show($@"Return delay fine: {fine}kn", @"Return", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
             if (dialogResult != DialogResult.OK) return;
+        
             _currentLoan.ReturnDate = DateTime.Now;
             _loansRepository.Edit(_currentLoan);
 

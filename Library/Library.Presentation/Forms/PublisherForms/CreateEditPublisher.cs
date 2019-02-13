@@ -1,27 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 
-namespace Library.Presentation.Forms
+namespace Library.Presentation.Forms.PublisherForms
 {
     public partial class CreateEditPublisher : Form
     {
         private readonly PublishersRepository _publishersRepository;
+        private readonly Publisher _publisherToEdit;
 
         public CreateEditPublisher()
         {
             InitializeComponent();
             var context = new LibraryContext();
             _publishersRepository = new PublishersRepository(context);
+            createEditButton.Text = @"Create";
+        }
+
+        public CreateEditPublisher(Publisher publisherToEdit)
+        {
+            InitializeComponent();
+
+            var context = new LibraryContext();
+            _publishersRepository = new PublishersRepository(context);
+            _publisherToEdit = publisherToEdit;
+            createEditButton.Text = @"Edit";
+
+            FillInputFields();
+        }
+
+        public void FillInputFields()
+        {
+            nameTextBox.Text = _publisherToEdit.Name;
         }
 
         public bool CheckInputFields()
@@ -32,16 +44,25 @@ namespace Library.Presentation.Forms
 
         }
 
-        private void Create(object sender, EventArgs e)
+        private void CreateEdit(object sender, EventArgs e)
         {
             if (!CheckInputFields()) return;
 
-            var newPublisher = new Publisher
+            if (_publisherToEdit == null)
             {
-                Name = nameTextBox.Text,
-            };
+                var newPublisher = new Publisher
+                {
+                    Name = nameTextBox.Text,
+                };
 
-            _publishersRepository.Add(newPublisher);
+                _publishersRepository.Add(newPublisher);
+            }
+            else
+            {
+                _publisherToEdit.Name = nameTextBox.Text;
+                _publishersRepository.Edit(_publisherToEdit);
+            }
+
             Close();
         }
     }

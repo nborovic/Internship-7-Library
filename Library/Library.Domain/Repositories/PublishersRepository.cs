@@ -35,7 +35,7 @@ namespace Library.Domain.Repositories
             var publisherToEdit = _context.Publishers.Find(editedPublisher.Id);
             if (publisherToEdit == null) return;
 
-            publisherToEdit.Name = publisherToEdit.Name;
+            publisherToEdit.Name = editedPublisher.Name;
 
             _context.SaveChanges();
         }

@@ -39,7 +39,6 @@ namespace Library.Domain.Repositories
             studentToEdit.Birthdate = editedStudent.Birthdate;
             studentToEdit.Class = editedStudent.Class;
             studentToEdit.Gender = editedStudent.Gender;
-            studentToEdit.Loans = editedStudent.Loans;
 
             _context.SaveChanges();
         }
