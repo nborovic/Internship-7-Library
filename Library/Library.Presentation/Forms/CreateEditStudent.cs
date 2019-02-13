@@ -29,6 +29,16 @@ namespace Library.Presentation.Forms
                 "1.c", "2.c", "3.c","4.c", "5.c", "6.c", "7.c", "8.c" });
         }
 
+        private bool CheckIfBirthdayAndGradeCoincide(int year)
+        {
+            for (var grade = 1; grade <= 8; grade++)
+                if (classComboBox.SelectedItem.ToString().Contains(grade.ToString()) && year >= grade + 4 &&
+                    year <= grade + 7)
+                    return true;
+
+            return false;
+        }
+
         private bool CheckInputFields()
         {
             if (firstNameTextBox.Text == "" || lastNameTextBox.Text == "" ||
@@ -40,34 +50,7 @@ namespace Library.Presentation.Forms
 
             //Check if birthday and grade coincide 
 
-            var checkBirthdayForFirstGrade = classComboBox.SelectedItem.ToString().Contains("1") && 
-                                             birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 5 ||
-                                             birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 7;
-            var checkBirthdayForSecondGrade = classComboBox.SelectedItem.ToString().Contains("2") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 7 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 9;
-            var checkBirthdayForThirdGrade = classComboBox.SelectedItem.ToString().Contains("3") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 8 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 10;
-            var checkBirthdayForFourthGrade = classComboBox.SelectedItem.ToString().Contains("4") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 9 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 11;
-            var checkBirthdayForFifthGrade = classComboBox.SelectedItem.ToString().Contains("5") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 10 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 12;
-            var checkBirthdayForSixthGrade = classComboBox.SelectedItem.ToString().Contains("6") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 11 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 13;
-            var checkBirthdayForSeventhGrade = classComboBox.SelectedItem.ToString().Contains("7") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 12 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 14;
-            var checkBirthdayForEighthGrade = classComboBox.SelectedItem.ToString().Contains("8") &&
-                                              birthdayDatePicker.Value.Date.Year < DateTime.Now.Year - 13 ||
-                                              birthdayDatePicker.Value.Date.Year > DateTime.Now.Year - 15;
-
-            if (!checkBirthdayForFirstGrade || !checkBirthdayForSecondGrade || !checkBirthdayForThirdGrade ||
-                !checkBirthdayForFourthGrade || !checkBirthdayForFifthGrade || !checkBirthdayForSixthGrade ||
-                !checkBirthdayForSeventhGrade || !checkBirthdayForEighthGrade) return true;
+            if (CheckIfBirthdayAndGradeCoincide(DateTime.Now.Year - birthdayDatePicker.Value.Date.Year)) return true;
             MessageBox.Show(@"Birthday and grade don't coincide!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
