@@ -4,13 +4,14 @@ using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 
-namespace Library.Presentation.Forms
+namespace Library.Presentation.Forms.BookForms
 {
     public partial class CreateEditBook : Form
     {
         private readonly BooksRepository _booksRepository;
         private readonly AuthorsRepository _authorsRepository;
         private readonly PublishersRepository _publishersRepository;
+        private readonly Book _bookToEdit;
 
         public CreateEditBook()
         {
@@ -21,7 +22,33 @@ namespace Library.Presentation.Forms
             _authorsRepository = new AuthorsRepository(context);
             _publishersRepository = new PublishersRepository(context);
 
+            createEditButton.Text = @"Edit";
             RefreshPublishersAndAuthorsList();
+        }
+
+        public CreateEditBook(Book bookToEdit)
+        {
+            InitializeComponent();
+
+            var context = new LibraryContext();
+            _booksRepository = new BooksRepository(context);
+            _authorsRepository = new AuthorsRepository(context);
+            _publishersRepository = new PublishersRepository(context);
+            _bookToEdit = bookToEdit;
+
+            createEditButton.Text = @"Edit";
+            RefreshPublishersAndAuthorsList();
+            FillInputFields();
+        }
+
+        public void FillInputFields()
+        {
+            nameTextBox.Text = _bookToEdit.Name;
+            genreTextBox.Text = _bookToEdit.Genre;
+            numberOfCopiesTextBox.Text = _bookToEdit.NumberOfCopies.ToString();
+            numberOfPagesTextBox.Text = _bookToEdit.NumberOfPages.ToString();
+            authorsListBox.Text = _bookToEdit.Author.ToString();
+            publishersListBox.Text = _bookToEdit.Publisher.ToString();
         }
 
         private void RefreshPublishersAndAuthorsList()
@@ -40,21 +67,36 @@ namespace Library.Presentation.Forms
 
         }
 
-        private void Create(object sender, EventArgs e)
+        private void CreateEdit(object sender, EventArgs e)
         {
             if (!CheckInputFields()) return;
 
-            var newBook = new Book
+            if (_bookToEdit == null)
             {
-                Name = nameTextBox.Text,
-                Genre = genreTextBox.Text,
-                NumberOfCopies = int.Parse(numberOfCopiesTextBox.Text),
-                NumberOfPages = int.Parse(numberOfPagesTextBox.Text),
-                AuthorId = ((Author) authorsListBox.SelectedItem).Id,
-                PublisherId = ((Publisher) publishersListBox.SelectedItem).Id,
-            };
+                var newBook = new Book
+                {
+                    Name = nameTextBox.Text,
+                    Genre = genreTextBox.Text,
+                    NumberOfCopies = int.Parse(numberOfCopiesTextBox.Text),
+                    NumberOfPages = int.Parse(numberOfPagesTextBox.Text),
+                    AuthorId = ((Author)authorsListBox.SelectedItem).Id,
+                    PublisherId = ((Publisher)publishersListBox.SelectedItem).Id,
+                };
 
-            _booksRepository.Add(newBook);
+                _booksRepository.Add(newBook);
+            }
+            else
+            {
+                _bookToEdit.Name = nameTextBox.Text;
+                _bookToEdit.AuthorId = ((Author) authorsListBox.SelectedItem).Id;
+                _bookToEdit.PublisherId = ((Publisher) publishersListBox.SelectedItem).Id;
+                _bookToEdit.Genre = genreTextBox.Text;
+                _bookToEdit.NumberOfPages = int.Parse(numberOfPagesTextBox.Text);
+                _bookToEdit.NumberOfCopies = int.Parse(numberOfCopiesTextBox.Text);
+
+                _booksRepository.Edit(_bookToEdit);
+            }
+
             Close();
         }
     }

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Presentation.Forms.BookForms;
 using Library.Presentation.Forms.LoanForms;
 using Library.Presentation.Forms.PublisherForms;
 
@@ -220,6 +221,10 @@ namespace Library.Presentation.Forms
                 case 3:
                     var editStudentWindow = new CreateEditStudent(entitiesListBox.SelectedItem as Student);
                     editStudentWindow.ShowDialog();
+                    break;
+                case 4:
+                    var editBookWindow = new CreateEditBook(entitiesListBox.SelectedItem as Book);
+                    editBookWindow.ShowDialog();
                     break;
                 default:
                     CommonErrorMessage();

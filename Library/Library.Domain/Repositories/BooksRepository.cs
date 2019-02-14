@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using Remotion.Linq.Parsing.Structure.IntermediateModel;
 
 namespace Library.Domain.Repositories
 {
@@ -34,14 +31,12 @@ namespace Library.Domain.Repositories
 
         public void Edit(Book editedBook)
         {
-            var bookToEdit = _context.Books.FirstOrDefault(book => book.Id == editedBook.Id);
+            var bookToEdit = _context.Books.Find(editedBook.Id);
             if (bookToEdit == null) return;
 
             bookToEdit.Name = editedBook.Name;
             bookToEdit.Genre = editedBook.Genre;
             bookToEdit.NumberOfPages = editedBook.NumberOfPages;
-            bookToEdit.Author = editedBook.Author;
-            bookToEdit.Publisher = editedBook.Publisher;
             bookToEdit.AuthorId = editedBook.AuthorId;
             bookToEdit.PublisherId = editedBook.PublisherId;
             bookToEdit.NumberOfCopies = editedBook.NumberOfCopies;
