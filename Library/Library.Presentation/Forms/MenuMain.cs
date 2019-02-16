@@ -226,6 +226,10 @@ namespace Library.Presentation.Forms
                     var editBookWindow = new CreateEditBook(entitiesListBox.SelectedItem as Book);
                     editBookWindow.ShowDialog();
                     break;
+                case 5:
+                    var editLoanWindow = new CreateEditLoan(entitiesListBox.SelectedItem as Loan);
+                    editLoanWindow.ShowDialog();
+                    break;
                 default:
                     CommonErrorMessage();
                     break;

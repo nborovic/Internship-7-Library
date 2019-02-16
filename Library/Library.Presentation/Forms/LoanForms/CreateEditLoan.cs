@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
@@ -12,6 +13,7 @@ namespace Library.Presentation.Forms.LoanForms
         private readonly LoansRepository _loansRepository;
         private readonly StudentsRepository _studentsRepository;
         private readonly BooksRepository _booksRepository;
+        private readonly Loan _loanToEdit;
 
         public CreateEditLoan()
         {
@@ -22,7 +24,29 @@ namespace Library.Presentation.Forms.LoanForms
             _studentsRepository = new StudentsRepository(context);
             _booksRepository = new BooksRepository(context);
 
+            createButton.Text = @"Create";
             RefreshStudentsAndBooksList();
+        }
+
+        public CreateEditLoan(Loan loanToEdit)
+        {
+            InitializeComponent();
+
+            var context = new LibraryContext();
+            _loansRepository = new LoansRepository(context);
+            _studentsRepository = new StudentsRepository(context);
+            _booksRepository = new BooksRepository(context);
+            _loanToEdit = loanToEdit;
+
+            createButton.Text = @"Edit";
+            RefreshStudentsAndBooksList();
+            FillInputFields();
+        }
+
+        private void FillInputFields()
+        {
+            studentsListBox.Text = _loanToEdit.Student.ToString();
+            booksListBox.Text = _loanToEdit.Book.ToString();
         }
 
         private void RefreshStudentsAndBooksList()
@@ -42,7 +66,7 @@ namespace Library.Presentation.Forms.LoanForms
             var currentStudentLoan = ((Student) studentsListBox.SelectedItem)?.Loans.ToList()
                 .FirstOrDefault(loan => loan.ReturnDate == null);
 
-            if (currentStudentLoan != null)
+            if (currentStudentLoan != null && _loanToEdit == null)
             {
                 MessageBox.Show(@"Selected student has active loan!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
@@ -58,15 +82,26 @@ namespace Library.Presentation.Forms.LoanForms
         {
             if (!CheckInputFields()) return;
 
-            var newLoan = new Loan
+            if (_loanToEdit == null)
             {
-                StudentId = ((Student) studentsListBox.SelectedItem).Id,
-                BookId = ((Book) booksListBox.SelectedItem).Id,
-                PickupDate = DateTime.Now,
-                ReturnDeadline = DateTime.Now.AddDays(21)
-            };
+                var newLoan = new Loan
+                {
+                    StudentId = ((Student)studentsListBox.SelectedItem).Id,
+                    BookId = ((Book)booksListBox.SelectedItem).Id,
+                    PickupDate = DateTime.Now,
+                    ReturnDeadline = DateTime.Now.AddDays(21)
+                };
 
-            _loansRepository.Add(newLoan);
+                _loansRepository.Add(newLoan);
+            }
+            else
+            {
+                _loanToEdit.StudentId = ((Student) studentsListBox.SelectedItem).Id;
+                _loanToEdit.BookId = ((Book) booksListBox.SelectedItem).Id;
+
+                _loansRepository.Edit(_loanToEdit);
+            }
+
             Close();
         }
     }
