@@ -40,7 +40,6 @@
             this.button10 = new System.Windows.Forms.Button();
             this.searchEntity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.filterCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // entitiesListBox
@@ -173,23 +172,11 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Search";
             // 
-            // filterCheckBox
-            // 
-            this.filterCheckBox.AutoSize = true;
-            this.filterCheckBox.Location = new System.Drawing.Point(391, 33);
-            this.filterCheckBox.Name = "filterCheckBox";
-            this.filterCheckBox.Size = new System.Drawing.Size(122, 17);
-            this.filterCheckBox.TabIndex = 12;
-            this.filterCheckBox.Text = "Search by last name";
-            this.filterCheckBox.UseVisualStyleBackColor = true;
-            this.filterCheckBox.CheckedChanged += new System.EventHandler(this.LastNameChecked);
-            // 
             // MenuMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 406);
-            this.Controls.Add(this.filterCheckBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchEntity);
             this.Controls.Add(this.button10);
@@ -223,6 +210,5 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox searchEntity;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox filterCheckBox;
     }
 }

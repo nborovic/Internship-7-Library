@@ -41,11 +41,10 @@
             this.numberOfCopiesTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.filterCheckBox = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.searchEntity = new System.Windows.Forms.TextBox();
+            this.searchPublisher = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchAuthor = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -166,16 +165,6 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Select publisher";
             // 
-            // filterCheckBox
-            // 
-            this.filterCheckBox.AutoSize = true;
-            this.filterCheckBox.Location = new System.Drawing.Point(192, 209);
-            this.filterCheckBox.Name = "filterCheckBox";
-            this.filterCheckBox.Size = new System.Drawing.Size(122, 17);
-            this.filterCheckBox.TabIndex = 23;
-            this.filterCheckBox.Text = "Search by last name";
-            this.filterCheckBox.UseVisualStyleBackColor = true;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -186,35 +175,37 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Search publisher";
             // 
-            // searchEntity
+            // searchPublisher
             // 
-            this.searchEntity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.searchEntity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.searchEntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEntity.Location = new System.Drawing.Point(33, 401);
-            this.searchEntity.Name = "searchEntity";
-            this.searchEntity.Size = new System.Drawing.Size(150, 22);
-            this.searchEntity.TabIndex = 21;
+            this.searchPublisher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.searchPublisher.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.searchPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchPublisher.Location = new System.Drawing.Point(33, 401);
+            this.searchPublisher.Name = "searchPublisher";
+            this.searchPublisher.Size = new System.Drawing.Size(150, 22);
+            this.searchPublisher.TabIndex = 21;
+            this.searchPublisher.TextChanged += new System.EventHandler(this.SearchPublisher);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 189);
+            this.label8.Location = new System.Drawing.Point(30, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 13);
             this.label8.TabIndex = 25;
             this.label8.Text = "Search author";
             // 
-            // textBox1
+            // searchAuthor
             // 
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(33, 205);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 22);
-            this.textBox1.TabIndex = 24;
+            this.searchAuthor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.searchAuthor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.searchAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchAuthor.Location = new System.Drawing.Point(33, 207);
+            this.searchAuthor.Name = "searchAuthor";
+            this.searchAuthor.Size = new System.Drawing.Size(150, 22);
+            this.searchAuthor.TabIndex = 24;
+            this.searchAuthor.TextChanged += new System.EventHandler(this.SearchAuthor);
             // 
             // CreateEditBook
             // 
@@ -222,10 +213,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 617);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.filterCheckBox);
+            this.Controls.Add(this.searchAuthor);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.searchEntity);
+            this.Controls.Add(this.searchPublisher);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -261,10 +251,9 @@
         private System.Windows.Forms.TextBox numberOfCopiesTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox filterCheckBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox searchEntity;
+        private System.Windows.Forms.TextBox searchPublisher;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchAuthor;
     }
 }

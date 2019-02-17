@@ -46,23 +46,18 @@ namespace Library.Presentation.Forms
             {
                 case 1:
                     _authorsRepository.GetAll().ForEach(author => entitiesListBox.Items.Add(author));
-                    filterCheckBox.Visible = true;
                     break;
                 case 2:
                     _publishersRepository.GetAll().ForEach(publisher => entitiesListBox.Items.Add(publisher));
-                    filterCheckBox.Visible = false;
                     break;
                 case 3:
                     _studentsRepository.GetAll().ForEach(student => entitiesListBox.Items.Add(student));
-                    filterCheckBox.Visible = true;
                     break;
                 case 4:
                     _booksRepository.GetAll().ForEach(book => entitiesListBox.Items.Add(book));
-                    filterCheckBox.Visible = false;
                     break;
                 case 5:
                     _loansRepository.GetAll().ForEach(loan => entitiesListBox.Items.Add(loan));
-                    filterCheckBox.Visible = true;
                     break;
                 default:
                     CommonErrorMessage();
@@ -128,55 +123,29 @@ namespace Library.Presentation.Forms
             {
                 case 1:
                     _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.FirstName + " " + author.LastName));
+                    _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
                     break;
                 case 2:
                     _publishersRepository.GetAll().ForEach(publisher => searchEntity.AutoCompleteCustomSource.Add(publisher.Name));
                     break;
                 case 3:
                     _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.FirstName + " " + student.LastName));
+                    _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.LastName + " " + student.FirstName));
                     break;
                 case 4:
                     _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Name));
+                    _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.FirstName + " " + author.LastName));
+                    _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
                     break;
                 case 5:
                     _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.FirstName + " " + loan.Student.LastName));
+                    _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.LastName + " " + loan.Student.FirstName));
+                    _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Name));
                     break;
                 default:
                     CommonErrorMessage();
                     break;
             }
-        }
-
-        private void LastNameChecked(object sender, EventArgs e)
-        {
-            searchEntity.AutoCompleteCustomSource.Clear();
-
-            if (filterCheckBox.Checked)
-            {
-                switch (_option)
-                {
-                    case 1:
-                        _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.LastName + " " + student.FirstName));
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.LastName + " " + loan.Student.FirstName));
-                        break;
-                    default:
-                        CommonErrorMessage();
-                        break;
-                }
-            }
-            else
-            {
-                SearchAutoComplete();
-            }         
         }
 
         private void Search(object sender, EventArgs e)
@@ -188,7 +157,8 @@ namespace Library.Presentation.Forms
                 case 1:
                     _authorsRepository.GetAll().ForEach(author =>
                     {
-                        if ((author.FirstName.ToLower() + " " + author.LastName.ToLower()).Contains(searchEntity.Text.ToLower()))
+                        if ((author.FirstName.ToLower() + " " + author.LastName.ToLower()).Contains(searchEntity.Text.ToLower()) || 
+                            (author.LastName.ToLower() + " " + author.FirstName.ToLower()).Contains(searchEntity.Text.ToLower()))
                             entitiesListBox.Items.Add(author);
                     });
                     break;
@@ -202,22 +172,26 @@ namespace Library.Presentation.Forms
                 case 3:
                     _studentsRepository.GetAll().ForEach(student =>
                     {
-                        if ((student.FirstName.ToLower() + " " + student.LastName.ToLower()).Contains(
-                            searchEntity.Text.ToLower()))
+                        if ((student.FirstName.ToLower() + " " + student.LastName.ToLower()).Contains(searchEntity.Text.ToLower()) ||
+                            (student.LastName.ToLower() + " " + student.FirstName.ToLower()).Contains(searchEntity.Text.ToLower()))
                             entitiesListBox.Items.Add(student);
                     });
                     break;
                 case 4:
                     _booksRepository.GetAll().ForEach(book =>
                     {
-                        if (book.Name.ToLower().Contains(searchEntity.Text.ToLower()))
+                        if (book.Name.ToLower().Contains(searchEntity.Text.ToLower()) ||
+                           (book.Author.FirstName.ToLower() + " " + book.Author.LastName.ToLower()).Contains(searchEntity.Text.ToLower()) ||
+                           (book.Author.LastName.ToLower() + " " + book.Author.FirstName.ToLower()).Contains(searchEntity.Text.ToLower()))
                             entitiesListBox.Items.Add(book);
                     });
                     break;
                 case 5:
                     _loansRepository.GetAll().ForEach(loan =>
                     {
-                        if ((loan.Student.FirstName.ToLower() + " " + loan.Student.LastName.ToLower()).Contains(searchEntity.Text.ToLower()))
+                        if ((loan.Student.FirstName.ToLower() + " " + loan.Student.LastName.ToLower()).Contains(searchEntity.Text.ToLower()) ||
+                            (loan.Student.LastName.ToLower() + " " + loan.Student.FirstName.ToLower()).Contains(searchEntity.Text.ToLower()) ||
+                            loan.Book.Name.ToLower().Contains(searchEntity.Text.ToLower()))
                             entitiesListBox.Items.Add(loan);
                     });
                     break;

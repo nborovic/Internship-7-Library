@@ -24,6 +24,7 @@ namespace Library.Presentation.Forms.BookForms
 
             createEditButton.Text = @"Edit";
             RefreshPublishersAndAuthorsList();
+            SearchAutoComplete();
         }
 
         public CreateEditBook(Book bookToEdit)
@@ -39,6 +40,7 @@ namespace Library.Presentation.Forms.BookForms
             createEditButton.Text = @"Edit";
             RefreshPublishersAndAuthorsList();
             FillInputFields();
+            SearchAutoComplete();
         }
 
         public void FillInputFields()
@@ -55,6 +57,39 @@ namespace Library.Presentation.Forms.BookForms
         {
             _authorsRepository.GetAll().ForEach(author => authorsListBox.Items.Add(author));
             _publishersRepository.GetAll().ForEach(publisher => publishersListBox.Items.Add(publisher));
+        }
+
+        private void SearchAutoComplete()
+        {
+            searchAuthor.AutoCompleteCustomSource.Clear();
+            searchPublisher.AutoCompleteCustomSource.Clear();
+
+            _authorsRepository.GetAll().ForEach(author => searchAuthor.AutoCompleteCustomSource.Add(author.FirstName + " " + author.LastName));
+            _authorsRepository.GetAll().ForEach(author => searchAuthor.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
+            _publishersRepository.GetAll().ForEach(publisher => searchPublisher.AutoCompleteCustomSource.Add(publisher.Name));
+        }
+
+        private void SearchAuthor(object sender, EventArgs e)
+        {
+            authorsListBox.Items.Clear();
+
+            _authorsRepository.GetAll().ForEach(author =>
+            {
+                if ((author.FirstName.ToLower() + " " + author.LastName.ToLower()).Contains(searchAuthor.Text.ToLower()) || 
+                    (author.LastName.ToLower() + " " + author.FirstName.ToLower()).Contains(searchAuthor.Text.ToLower()))
+                    authorsListBox.Items.Add(author);
+            });
+        }
+
+        private void SearchPublisher(object sender, EventArgs e)
+        {
+            publishersListBox.Items.Clear();
+
+            _publishersRepository.GetAll().ForEach(publisher =>
+            {
+                if (publisher.Name.ToLower().Contains(searchPublisher.Text.ToLower()))
+                    publishersListBox.Items.Add(publisher);
+            });
         }
 
         private bool CheckInputFields()

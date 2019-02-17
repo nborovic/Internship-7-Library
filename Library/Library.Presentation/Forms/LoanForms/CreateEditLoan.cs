@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
@@ -26,6 +25,7 @@ namespace Library.Presentation.Forms.LoanForms
 
             createButton.Text = @"Create";
             RefreshStudentsAndBooksList();
+            SearchAutoComplete();
         }
 
         public CreateEditLoan(Loan loanToEdit)
@@ -41,6 +41,7 @@ namespace Library.Presentation.Forms.LoanForms
             createButton.Text = @"Edit";
             RefreshStudentsAndBooksList();
             FillInputFields();
+            SearchAutoComplete();
         }
 
         private void FillInputFields()
@@ -53,6 +54,18 @@ namespace Library.Presentation.Forms.LoanForms
         {
             _studentsRepository.GetAll().ForEach(student => studentsListBox.Items.Add(student));
             _booksRepository.GetAll().ForEach(book => booksListBox.Items.Add(book));
+        }
+
+        private void SearchAutoComplete()
+        {
+            searchBook.AutoCompleteCustomSource.Clear();
+            searchStudent.AutoCompleteCustomSource.Clear();
+
+            _booksRepository.GetAll().ForEach(book => searchBook.AutoCompleteCustomSource.Add(book.Name));
+            _booksRepository.GetAll().ForEach(book => searchBook.AutoCompleteCustomSource.Add(book.Author.FirstName + " " + book.Author.LastName));
+            _booksRepository.GetAll().ForEach(book => searchBook.AutoCompleteCustomSource.Add(book.Author.LastName + " " + book.Author.FirstName));
+            _studentsRepository.GetAll().ForEach(student => searchStudent.AutoCompleteCustomSource.Add(student.FirstName + " " + student.LastName));
+            _studentsRepository.GetAll().ForEach(student => searchStudent.AutoCompleteCustomSource.Add(student.LastName + " " + student.FirstName));
         }
 
         private bool CheckInputFields()
@@ -78,7 +91,34 @@ namespace Library.Presentation.Forms.LoanForms
 
         }
 
-        private void Create(object sender, EventArgs e)
+        private void SearchStudent(object sender, EventArgs e)
+        {
+            studentsListBox.Items.Clear();
+
+            _studentsRepository.GetAll().ForEach(student =>
+            {
+                if ((student.FirstName.ToLower() + " " + student.LastName.ToLower()).Contains(searchStudent.Text.ToLower()) ||
+                    (student.LastName.ToLower() + " " + student.FirstName.ToLower()).Contains(searchStudent.Text.ToLower()))
+                    studentsListBox.Items.Add(student);
+            });
+        }
+
+        private void SearchBook(object sender, EventArgs e)
+        {
+            booksListBox.Items.Clear();
+
+            _booksRepository.GetAll().ForEach(book =>
+            {
+                if (book.Name.ToLower().Contains(searchBook.Text.ToLower()) ||
+                    (book.Author.FirstName.ToLower() + " " + book.Author.LastName.ToLower()).Contains(
+                        searchBook.Text.ToLower()) ||
+                    (book.Author.LastName.ToLower() + " " + book.Author.FirstName.ToLower()).Contains(
+                        searchBook.Text.ToLower()))
+                    booksListBox.Items.Add(book);
+            });
+        }
+
+        private void CreateEdit(object sender, EventArgs e)
         {
             if (!CheckInputFields()) return;
 
@@ -96,8 +136,8 @@ namespace Library.Presentation.Forms.LoanForms
             }
             else
             {
-                _loanToEdit.StudentId = ((Student) studentsListBox.SelectedItem).Id;
-                _loanToEdit.BookId = ((Book) booksListBox.SelectedItem).Id;
+                _loanToEdit.StudentId = ((Student)studentsListBox.SelectedItem).Id;
+                _loanToEdit.BookId = ((Book)booksListBox.SelectedItem).Id;
 
                 _loansRepository.Edit(_loanToEdit);
             }
