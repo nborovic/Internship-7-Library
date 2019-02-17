@@ -36,7 +36,6 @@ namespace Library.Domain.Repositories
 
             authorToEdit.FirstName = editedAuthor.FirstName;
             authorToEdit.LastName = editedAuthor.LastName;
-            authorToEdit.Books = editedAuthor.Books;
 
             _context.SaveChanges();
         }

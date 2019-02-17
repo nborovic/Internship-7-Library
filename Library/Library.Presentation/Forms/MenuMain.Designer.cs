@@ -38,6 +38,9 @@
             this.detailsButton = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.searchEntity = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.filterCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // entitiesListBox
@@ -45,7 +48,7 @@
             this.entitiesListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entitiesListBox.FormattingEnabled = true;
             this.entitiesListBox.ItemHeight = 20;
-            this.entitiesListBox.Location = new System.Drawing.Point(38, 67);
+            this.entitiesListBox.Location = new System.Drawing.Point(39, 120);
             this.entitiesListBox.Name = "entitiesListBox";
             this.entitiesListBox.Size = new System.Drawing.Size(473, 224);
             this.entitiesListBox.TabIndex = 0;
@@ -53,7 +56,7 @@
             // authorsButton
             // 
             this.authorsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.authorsButton.Location = new System.Drawing.Point(38, 23);
+            this.authorsButton.Location = new System.Drawing.Point(39, 76);
             this.authorsButton.Name = "authorsButton";
             this.authorsButton.Size = new System.Drawing.Size(88, 38);
             this.authorsButton.TabIndex = 1;
@@ -64,7 +67,7 @@
             // publishersButton
             // 
             this.publishersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.publishersButton.Location = new System.Drawing.Point(132, 23);
+            this.publishersButton.Location = new System.Drawing.Point(133, 76);
             this.publishersButton.Name = "publishersButton";
             this.publishersButton.Size = new System.Drawing.Size(97, 38);
             this.publishersButton.TabIndex = 2;
@@ -75,7 +78,7 @@
             // studentsButton
             // 
             this.studentsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studentsButton.Location = new System.Drawing.Point(235, 23);
+            this.studentsButton.Location = new System.Drawing.Point(236, 76);
             this.studentsButton.Name = "studentsButton";
             this.studentsButton.Size = new System.Drawing.Size(88, 38);
             this.studentsButton.TabIndex = 3;
@@ -86,7 +89,7 @@
             // booksButton
             // 
             this.booksButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.booksButton.Location = new System.Drawing.Point(329, 23);
+            this.booksButton.Location = new System.Drawing.Point(330, 76);
             this.booksButton.Name = "booksButton";
             this.booksButton.Size = new System.Drawing.Size(88, 38);
             this.booksButton.TabIndex = 4;
@@ -97,7 +100,7 @@
             // loansButton
             // 
             this.loansButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loansButton.Location = new System.Drawing.Point(423, 23);
+            this.loansButton.Location = new System.Drawing.Point(424, 76);
             this.loansButton.Name = "loansButton";
             this.loansButton.Size = new System.Drawing.Size(88, 38);
             this.loansButton.TabIndex = 5;
@@ -108,7 +111,7 @@
             // createButton
             // 
             this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.Location = new System.Drawing.Point(38, 297);
+            this.createButton.Location = new System.Drawing.Point(39, 350);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(88, 38);
             this.createButton.TabIndex = 6;
@@ -119,7 +122,7 @@
             // detailsButton
             // 
             this.detailsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detailsButton.Location = new System.Drawing.Point(164, 297);
+            this.detailsButton.Location = new System.Drawing.Point(165, 350);
             this.detailsButton.Name = "detailsButton";
             this.detailsButton.Size = new System.Drawing.Size(88, 38);
             this.detailsButton.TabIndex = 7;
@@ -130,7 +133,7 @@
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(287, 297);
+            this.button9.Location = new System.Drawing.Point(297, 350);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(88, 38);
             this.button9.TabIndex = 8;
@@ -141,7 +144,7 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(414, 297);
+            this.button10.Location = new System.Drawing.Point(424, 350);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(88, 38);
             this.button10.TabIndex = 9;
@@ -149,11 +152,45 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.Remove);
             // 
+            // searchEntity
+            // 
+            this.searchEntity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.searchEntity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.searchEntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchEntity.Location = new System.Drawing.Point(190, 30);
+            this.searchEntity.Name = "searchEntity";
+            this.searchEntity.Size = new System.Drawing.Size(195, 22);
+            this.searchEntity.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(260, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Search";
+            // 
+            // filterCheckBox
+            // 
+            this.filterCheckBox.AutoSize = true;
+            this.filterCheckBox.Location = new System.Drawing.Point(391, 33);
+            this.filterCheckBox.Name = "filterCheckBox";
+            this.filterCheckBox.Size = new System.Drawing.Size(122, 17);
+            this.filterCheckBox.TabIndex = 12;
+            this.filterCheckBox.Text = "Search by last name";
+            this.filterCheckBox.UseVisualStyleBackColor = true;
+            this.filterCheckBox.CheckedChanged += new System.EventHandler(this.LastNameChecked);
+            // 
             // MenuMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 352);
+            this.ClientSize = new System.Drawing.Size(555, 406);
+            this.Controls.Add(this.filterCheckBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.searchEntity);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.detailsButton);
@@ -167,6 +204,7 @@
             this.Name = "MenuMain";
             this.Text = "Menu";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -182,5 +220,8 @@
         private System.Windows.Forms.Button detailsButton;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TextBox searchEntity;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox filterCheckBox;
     }
 }

@@ -11,27 +11,32 @@ namespace Library.Presentation.Forms
 {
     public partial class MenuMain : Form
     {
-        private readonly AuthorsRepository _authorsRepository;
-        private readonly StudentsRepository _studentsRepository;
-        private readonly PublishersRepository _publishersRepository;
-        private readonly BooksRepository _booksRepository;
-        private readonly LoansRepository _loansRepository;
+        private AuthorsRepository _authorsRepository;
+        private StudentsRepository _studentsRepository;
+        private PublishersRepository _publishersRepository;
+        private BooksRepository _booksRepository;
+        private LoansRepository _loansRepository;
         private int _option = 1;
 
         public MenuMain()
         {
             InitializeComponent();
+            RefreshRepositories();
+            RefreshList();
+            SearchAutoComplete();
+        }
 
+        /* List refresh methods */
+
+        private void RefreshRepositories()
+        {
             var context = new LibraryContext();
             _authorsRepository = new AuthorsRepository(context);
             _studentsRepository = new StudentsRepository(context);
             _publishersRepository = new PublishersRepository(context);
             _booksRepository = new BooksRepository(context);
             _loansRepository = new LoansRepository(context);
-            RefreshList();
         }
-
-        /* List refresh methods */
 
         private void RefreshList()
         {
@@ -41,51 +46,57 @@ namespace Library.Presentation.Forms
             {
                 case 1:
                     _authorsRepository.GetAll().ForEach(author => entitiesListBox.Items.Add(author));
+                    filterCheckBox.Visible = true;
                     break;
                 case 2:
                     _publishersRepository.GetAll().ForEach(publisher => entitiesListBox.Items.Add(publisher));
-
+                    filterCheckBox.Visible = false;
                     break;
                 case 3:
                     _studentsRepository.GetAll().ForEach(student => entitiesListBox.Items.Add(student));
+                    filterCheckBox.Visible = true;
                     break;
                 case 4:
                     _booksRepository.GetAll().ForEach(book => entitiesListBox.Items.Add(book));
+                    filterCheckBox.Visible = false;
                     break;
                 case 5:
                     _loansRepository.GetAll().ForEach(loan => entitiesListBox.Items.Add(loan));
+                    filterCheckBox.Visible = false;
                     break;
                 default:
                     CommonErrorMessage();
                     break;
             }
+
+            SearchAutoComplete();
         }
 
-        private void AuthorsRefresh(object sender, System.EventArgs e)
+        private void AuthorsRefresh(object sender, EventArgs e)
         {
             _option = 1;
             RefreshList();
         }
 
-        private void PublishersRefresh(object sender, System.EventArgs e)
+        private void PublishersRefresh(object sender, EventArgs e)
         {
             _option = 2;
             RefreshList();
         }
 
-        private void StudentsRefresh(object sender, System.EventArgs e)
+        private void StudentsRefresh(object sender, EventArgs e)
         {
             _option = 3;
             RefreshList();
         }
 
-        private void BooksRefresh(object sender, System.EventArgs e)
+        private void BooksRefresh(object sender, EventArgs e)
         {
             _option = 4;
             RefreshList();
         }
 
-        private void LoansRefresh(object sender, System.EventArgs e)
+        private void LoansRefresh(object sender, EventArgs e)
         {
             _option = 5;
             RefreshList();
@@ -99,10 +110,70 @@ namespace Library.Presentation.Forms
             return false;
         }
 
-        private static void CommonErrorMessage()
+        private void CommonErrorMessage()
         {
             MessageBox.Show(@"Something went wrong", @"Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /* Search auto complete */
+
+        private void SearchAutoComplete()
+        {
+            searchEntity.AutoCompleteCustomSource.Clear();
+
+            switch (_option)
+            {
+                case 1:
+                    _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.FirstName + " " + author.LastName));
+                    break;
+                case 2:
+                    _publishersRepository.GetAll().ForEach(publisher => searchEntity.AutoCompleteCustomSource.Add(publisher.Name));
+                    break;
+                case 3:
+                    _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.FirstName + " " + student.LastName));
+                    break;
+                case 4:
+                    _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Name));
+                    break;
+                case 5:
+                    _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Book.Name));
+                    break;
+                default:
+                    CommonErrorMessage();
+                    break;
+            }
+        }
+
+        private void LastNameChecked(object sender, EventArgs e)
+        {
+            searchEntity.AutoCompleteCustomSource.Clear();
+
+            if (filterCheckBox.Checked)
+            {
+                switch (_option)
+                {
+                    case 1:
+                        _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.LastName + " " + student.FirstName));
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        CommonErrorMessage();
+                        break;
+                }
+            }
+            else
+            {
+                SearchAutoComplete();
+            }         
         }
 
         /* Details */
@@ -140,7 +211,7 @@ namespace Library.Presentation.Forms
 
         /* Remove */
 
-        private void Remove(object sender, System.EventArgs e)
+        private void Remove(object sender, EventArgs e)
         {
             if (!CheckForSelectedItem()) return;
             switch (_option)
@@ -235,6 +306,7 @@ namespace Library.Presentation.Forms
                     break;
             }
 
+            RefreshRepositories();
             RefreshList();
         }
     }
