@@ -3,13 +3,14 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Infrastructure.Extensions;
 
 namespace Library.Presentation.Forms
 {
     public partial class CreateEditAuthor : Form
     {
         private readonly AuthorsRepository _authorsRepository;
-        private Author _authorToEdit;
+        private readonly Author _authorToEdit;
 
         public CreateEditAuthor()
         {
@@ -40,8 +41,16 @@ namespace Library.Presentation.Forms
 
         public bool CheckInputFields()
         {
-            if (firstNameTextBox.Text != "" && lastNameTextBox.Text != "") return true;
-            MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (firstNameTextBox.Text == "" && lastNameTextBox.Text == "")
+            {
+                MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (firstNameTextBox.Text.NameFormatting().Length < 30 ||
+                lastNameTextBox.Text.NameFormatting().Length < 30) return true;
+            MessageBox.Show(@"First name or last name input is too long! (max: 30 characters)", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
 
         }
@@ -54,8 +63,8 @@ namespace Library.Presentation.Forms
             {
                 var newAuthor = new Author
                 {
-                    FirstName = firstNameTextBox.Text,
-                    LastName = lastNameTextBox.Text,
+                    FirstName = firstNameTextBox.Text.NameFormatting(),
+                    LastName = lastNameTextBox.Text.NameFormatting()
                 };
 
                 _authorsRepository.Add(newAuthor);
@@ -63,8 +72,8 @@ namespace Library.Presentation.Forms
 
             else
             {
-                _authorToEdit.FirstName = firstNameTextBox.Text;
-                _authorToEdit.LastName = lastNameTextBox.Text;
+                _authorToEdit.FirstName = firstNameTextBox.Text.NameFormatting();
+                _authorToEdit.LastName = lastNameTextBox.Text.NameFormatting();
                 _authorsRepository.Edit(_authorToEdit);
             }
 

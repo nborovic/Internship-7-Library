@@ -13,6 +13,7 @@ namespace Library.Presentation.Forms
     {
         private readonly Student _selectedStudent;
         private readonly LoansRepository _loansRepository;
+        private readonly BooksRepository _booksRepository;
         private Loan _currentLoan;
 
         public StudentDetails(Student selectedStudent)
@@ -22,6 +23,7 @@ namespace Library.Presentation.Forms
             var context = new LibraryContext();
             _selectedStudent = selectedStudent;
             _loansRepository = new LoansRepository(context);
+            _booksRepository = new BooksRepository(context);
             RefreshData();
         }
 
@@ -40,6 +42,15 @@ namespace Library.Presentation.Forms
             studentClass.Text = _selectedStudent.Class;
             birthdateLabel.Text = $@"Birthday: {_selectedStudent.Birthdate:d}";
             genderLabel.Text = $@"Gender: {_selectedStudent.Gender}";
+
+            var listOfBorrowedBooks = new List<Book>();
+            _booksRepository.GetAll().ForEach(book => _selectedStudent.Loans.ToList().ForEach(loan =>
+            {
+                if (book.Id == loan.Book.Id && !listOfBorrowedBooks.Contains(book))
+                    listOfBorrowedBooks.Add(book);
+            }));
+
+            borrowedBooks.Text = $@"Borrowed books: {listOfBorrowedBooks.Count}/{_booksRepository.GetAll().Count}";
             loansListBox.Items.Clear();
 
             _selectedStudent.Loans.ToList().ForEach(loan =>

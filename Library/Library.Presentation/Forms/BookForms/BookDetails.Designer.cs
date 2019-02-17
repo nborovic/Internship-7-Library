@@ -1,4 +1,4 @@
-﻿namespace Library.Presentation.Forms
+﻿namespace Library.Presentation.Forms.BookForms
 {
     partial class BookDetails
     {
@@ -34,6 +34,7 @@
             this.authorLabel = new System.Windows.Forms.Label();
             this.publisherLabel = new System.Windows.Forms.Label();
             this.rentedLabel = new System.Windows.Forms.Label();
+            this.copiesColorIndicator = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // bookName
@@ -102,11 +103,21 @@
             this.rentedLabel.TabIndex = 10;
             this.rentedLabel.Text = "Rented: ";
             // 
+            // copiesColorIndicator
+            // 
+            this.copiesColorIndicator.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.copiesColorIndicator.Location = new System.Drawing.Point(346, 158);
+            this.copiesColorIndicator.Name = "copiesColorIndicator";
+            this.copiesColorIndicator.ReadOnly = true;
+            this.copiesColorIndicator.Size = new System.Drawing.Size(13, 13);
+            this.copiesColorIndicator.TabIndex = 11;
+            // 
             // BookDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 184);
+            this.Controls.Add(this.copiesColorIndicator);
             this.Controls.Add(this.rentedLabel);
             this.Controls.Add(this.publisherLabel);
             this.Controls.Add(this.authorLabel);
@@ -128,5 +139,6 @@
         private System.Windows.Forms.Label authorLabel;
         private System.Windows.Forms.Label publisherLabel;
         private System.Windows.Forms.Label rentedLabel;
+        private System.Windows.Forms.TextBox copiesColorIndicator;
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Infrastructure.Extensions;
 
 namespace Library.Presentation.Forms.BookForms
 {
@@ -94,12 +95,18 @@ namespace Library.Presentation.Forms.BookForms
 
         private bool CheckInputFields()
         {
-            if (nameTextBox.Text != "" && genreTextBox.Text != "" && numberOfCopiesTextBox.Text != "" &&
-                numberOfPagesTextBox.Text != "" && authorsListBox.SelectedItem != null &&
-                publishersListBox.SelectedItem != null) return true;
-            MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
+            if (nameTextBox.Text == "" && genreTextBox.Text == "" && numberOfCopiesTextBox.Text == "" &&
+                numberOfPagesTextBox.Text == "" && authorsListBox.SelectedItem == null &&
+                publishersListBox.SelectedItem != null)
+            {
+                MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
+            if (nameTextBox.Text.NameFormatting().Length < 50) return true;
+
+            MessageBox.Show(@"Name of the book is to long! (max: 50 characters)", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
         private void CreateEdit(object sender, EventArgs e)

@@ -241,13 +241,16 @@ namespace Library.Presentation.Forms
         {
             if (!CheckForSelectedItem()) return;
 
-            var removeConfirmation = MessageBox.Show($@"Are you sure you want to remove this entity?", "Remove",
+            var removeConfirmation = MessageBox.Show($@"Are you sure you want to remove this entity?", @"Remove",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (removeConfirmation != DialogResult.Yes) return;
 
             switch (_option)
             {
                 case 1:
+                    var removeConfirmationBooks = MessageBox.Show($@"Removing this author will also remove all of his books and loans related to them!", @"Remove",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (removeConfirmationBooks != DialogResult.OK) return;
                     _authorsRepository.Remove(entitiesListBox.SelectedItem as Author);
                     break;
                 case 2:
@@ -257,6 +260,9 @@ namespace Library.Presentation.Forms
                     _studentsRepository.Remove(entitiesListBox.SelectedItem as Student);
                     break;
                 case 4:
+                    var removeConfirmationLoans = MessageBox.Show($@"Removing this book will also remove all related loans!", @"Remove",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (removeConfirmationLoans != DialogResult.OK) return;
                     _booksRepository.Remove(entitiesListBox.SelectedItem as Book);
                     break;
                 case 5:

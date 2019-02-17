@@ -178,6 +178,10 @@
       <Project>{e79b5cca-4b52-44ce-bec4-ff0b50de646b}</Project>
       <Name>Library.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Library.Infrastructure\Library.Infrastructure.csproj">
+      <Project>{a9f43c55-bc5f-48f5-84c6-1564071235b6}</Project>
+      <Name>Library.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,7 +36,7 @@
             this.studentLoans = new System.Windows.Forms.Label();
             this.currentLoanLabel = new System.Windows.Forms.TextBox();
             this.returnButton = new System.Windows.Forms.Button();
-            this.newLoanButton = new System.Windows.Forms.Button();
+            this.borrowedBooks = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // studentFullName
@@ -90,7 +90,7 @@
             this.loansListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loansListBox.FormattingEnabled = true;
             this.loansListBox.ItemHeight = 20;
-            this.loansListBox.Location = new System.Drawing.Point(40, 148);
+            this.loansListBox.Location = new System.Drawing.Point(40, 167);
             this.loansListBox.Name = "loansListBox";
             this.loansListBox.Size = new System.Drawing.Size(290, 184);
             this.loansListBox.TabIndex = 10;
@@ -99,7 +99,7 @@
             // 
             this.studentLoans.AutoSize = true;
             this.studentLoans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studentLoans.Location = new System.Drawing.Point(37, 130);
+            this.studentLoans.Location = new System.Drawing.Point(37, 149);
             this.studentLoans.Name = "studentLoans";
             this.studentLoans.Size = new System.Drawing.Size(105, 15);
             this.studentLoans.TabIndex = 11;
@@ -110,7 +110,7 @@
             this.currentLoanLabel.BackColor = System.Drawing.SystemColors.Menu;
             this.currentLoanLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.currentLoanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentLoanLabel.Location = new System.Drawing.Point(40, 345);
+            this.currentLoanLabel.Location = new System.Drawing.Point(40, 362);
             this.currentLoanLabel.Name = "currentLoanLabel";
             this.currentLoanLabel.ReadOnly = true;
             this.currentLoanLabel.Size = new System.Drawing.Size(290, 17);
@@ -120,7 +120,7 @@
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(92, 377);
+            this.returnButton.Location = new System.Drawing.Point(140, 388);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(83, 31);
             this.returnButton.TabIndex = 16;
@@ -128,21 +128,22 @@
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Click += new System.EventHandler(this.Return);
             // 
-            // newLoanButton
+            // borrowedBooks
             // 
-            this.newLoanButton.Location = new System.Drawing.Point(181, 377);
-            this.newLoanButton.Name = "newLoanButton";
-            this.newLoanButton.Size = new System.Drawing.Size(83, 31);
-            this.newLoanButton.TabIndex = 17;
-            this.newLoanButton.Text = "New loan";
-            this.newLoanButton.UseVisualStyleBackColor = true;
+            this.borrowedBooks.AutoSize = true;
+            this.borrowedBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.borrowedBooks.Location = new System.Drawing.Point(36, 122);
+            this.borrowedBooks.Name = "borrowedBooks";
+            this.borrowedBooks.Size = new System.Drawing.Size(132, 20);
+            this.borrowedBooks.TabIndex = 17;
+            this.borrowedBooks.Text = "Borrowed books: ";
             // 
             // StudentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 436);
-            this.Controls.Add(this.newLoanButton);
+            this.ClientSize = new System.Drawing.Size(373, 431);
+            this.Controls.Add(this.borrowedBooks);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.currentLoanLabel);
             this.Controls.Add(this.studentLoans);
@@ -168,6 +169,6 @@
         private System.Windows.Forms.Label studentLoans;
         private System.Windows.Forms.TextBox currentLoanLabel;
         private System.Windows.Forms.Button returnButton;
-        private System.Windows.Forms.Button newLoanButton;
+        private System.Windows.Forms.Label borrowedBooks;
     }
 }
