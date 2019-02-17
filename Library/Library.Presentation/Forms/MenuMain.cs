@@ -240,6 +240,11 @@ namespace Library.Presentation.Forms
         private void Remove(object sender, EventArgs e)
         {
             if (!CheckForSelectedItem()) return;
+
+            var removeConfirmation = MessageBox.Show($@"Are you sure you want to remove this entity?", "Remove",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (removeConfirmation != DialogResult.Yes) return;
+
             switch (_option)
             {
                 case 1:
