@@ -43,7 +43,8 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public Student Get(int id) => _context.Students.Include(student => student.Loans).FirstOrDefault(student => student.Id == id);
-        public List<Student> GetAll() => _context.Students.Include(student => student.Loans).ToList();
+        public List<Student> GetAll() => _context.Students.
+            Include(student => student.Loans).ThenInclude(loan => loan.Book).
+            ToList();
     }
 }

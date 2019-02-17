@@ -3,6 +3,7 @@ using System.Linq;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.ResultOperators.Internal;
 
 namespace Library.Domain.Repositories
 {
@@ -44,7 +45,10 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public Book Get(int id) => _context.Books.Include(book => book.Loans).FirstOrDefault(book => book.Id == id);
-        public List<Book> GetAll() => _context.Books.Include(book => book.Loans).Include(book => book.Author).Include(book => book.Publisher).ToList();
+        public List<Book> GetAll() => _context.Books.
+            Include(book => book.Loans).ThenInclude(loan => loan.Book).
+            Include(book => book.Loans).ThenInclude(loan => loan.Student).
+            Include(book => book.Author).
+            Include(book => book.Publisher).ToList();
     }
 }

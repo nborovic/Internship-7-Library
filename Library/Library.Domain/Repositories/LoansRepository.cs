@@ -44,6 +44,10 @@ namespace Library.Domain.Repositories
         }
 
         public Loan Get(int id) => _context.Loans.Include(loan => loan.Student).Include(loan => loan.Book).FirstOrDefault(loan => loan.Id == id);
-        public List<Loan> GetAll() => _context.Loans.Include(loan => loan.Student).Include(loan => loan.Book).Include(loan => loan.Book.Author).ToList();
+        public List<Loan> GetAll() => _context.Loans.
+            Include(loan => loan.Student).
+            Include(loan => loan.Book).
+            Include(loan => loan.Book.Author).
+            ToList();
     }
 }

@@ -40,7 +40,8 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public Author Get(int id) => _context.Authors.Include(author => author.Books).FirstOrDefault(author => author.Id == id);
-        public List<Author> GetAll() => _context.Authors.Include(author => author.Books).ToList();
+        public List<Author> GetAll() => _context.Authors.
+            Include(author => author.Books).ThenInclude(book => book.Author).
+            ToList();
     }
 }

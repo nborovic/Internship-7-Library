@@ -26,7 +26,7 @@ namespace Library.Presentation.Forms
             SearchAutoComplete();
         }
 
-        /* List refresh methods */
+        // List refresh methods
 
         private void RefreshRepositories()
         {
@@ -62,7 +62,7 @@ namespace Library.Presentation.Forms
                     break;
                 case 5:
                     _loansRepository.GetAll().ForEach(loan => entitiesListBox.Items.Add(loan));
-                    filterCheckBox.Visible = false;
+                    filterCheckBox.Visible = true;
                     break;
                 default:
                     CommonErrorMessage();
@@ -101,6 +101,8 @@ namespace Library.Presentation.Forms
             _option = 5;
             RefreshList();
         }
+    
+        // Errors
 
         private bool CheckForSelectedItem()
         {
@@ -116,7 +118,7 @@ namespace Library.Presentation.Forms
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        /* Search auto complete */
+        // Search auto complete methods
 
         private void SearchAutoComplete()
         {
@@ -137,7 +139,7 @@ namespace Library.Presentation.Forms
                     _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Name));
                     break;
                 case 5:
-                    _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Book.Name));
+                    _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.FirstName + " " + loan.Student.LastName));
                     break;
                 default:
                     CommonErrorMessage();
@@ -164,6 +166,7 @@ namespace Library.Presentation.Forms
                     case 4:
                         break;
                     case 5:
+                        _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.LastName + " " + loan.Student.FirstName));
                         break;
                     default:
                         CommonErrorMessage();
@@ -176,67 +179,52 @@ namespace Library.Presentation.Forms
             }         
         }
 
-        /* Details */
-
-        private void Details(object sender, EventArgs e)
+        private void Search(object sender, EventArgs e)
         {
-            if (!CheckForSelectedItem()) return;
+            entitiesListBox.Items.Clear();
+
             switch (_option)
             {
                 case 1:
-                    var authorDetailsWindow = new AuthorDetails(entitiesListBox.SelectedItem as Author);
-                    authorDetailsWindow.ShowDialog();
+                    _authorsRepository.GetAll().ForEach(author =>
+                    {
+                        if ((author.FirstName.ToLower() + " " + author.LastName.ToLower()).Contains(searchEntity.Text.ToLower()))
+                            entitiesListBox.Items.Add(author);
+                    });
                     break;
                 case 2:
-                    var publisherDetailsWindow = new PublisherDetails(entitiesListBox.SelectedItem as Publisher);
-                    publisherDetailsWindow.ShowDialog();
+                    _publishersRepository.GetAll().ForEach(publisher =>
+                    {
+                        if (publisher.Name.ToLower().Contains(searchEntity.Text.ToLower()))
+                            entitiesListBox.Items.Add(publisher);
+                    });
                     break;
                 case 3:
-                    var studentDetailsWindow = new StudentDetails(entitiesListBox.SelectedItem as Student);
-                    studentDetailsWindow.ShowDialog();
+                    _studentsRepository.GetAll().ForEach(student =>
+                    {
+                        if ((student.FirstName.ToLower() + " " + student.LastName.ToLower()).Contains(
+                            searchEntity.Text.ToLower()))
+                            entitiesListBox.Items.Add(student);
+                    });
                     break;
                 case 4:
-                    var bookDetailsWindow = new BookDetails(entitiesListBox.SelectedItem as Book);
-                    bookDetailsWindow.ShowDialog();
+                    _booksRepository.GetAll().ForEach(book =>
+                    {
+                        if (book.Name.ToLower().Contains(searchEntity.Text.ToLower()))
+                            entitiesListBox.Items.Add(book);
+                    });
                     break;
                 case 5:
-                    var loanDetailsWindow = new LoanDetails(entitiesListBox.SelectedItem as Loan);
-                    loanDetailsWindow.ShowDialog();
+                    _loansRepository.GetAll().ForEach(loan =>
+                    {
+                        if ((loan.Student.FirstName.ToLower() + " " + loan.Student.LastName.ToLower()).Contains(searchEntity.Text.ToLower()))
+                            entitiesListBox.Items.Add(loan);
+                    });
                     break;
                 default:
                     CommonErrorMessage();
                     break;
             }
-        }
-
-        /* Remove */
-
-        private void Remove(object sender, EventArgs e)
-        {
-            if (!CheckForSelectedItem()) return;
-            switch (_option)
-            {
-                case 1:
-                    _authorsRepository.Remove(entitiesListBox.SelectedItem as Author);
-                    break;
-                case 2:
-                    _publishersRepository.Remove(entitiesListBox.SelectedItem as Publisher);
-                    break;
-                case 3:
-                    _studentsRepository.Remove(entitiesListBox.SelectedItem as Student);
-                    break;
-                case 4:
-                    _booksRepository.Remove(entitiesListBox.SelectedItem as Book);
-                    break;
-                case 5:
-                    _loansRepository.Remove(entitiesListBox.SelectedItem as Loan);
-                    break;
-                default:
-                    CommonErrorMessage();
-                    break;
-            }
-
-            RefreshList();
         }
 
         /* Create */
@@ -264,6 +252,36 @@ namespace Library.Presentation.Forms
                 case 5:
                     var createLoanWindow = new CreateEditLoan();
                     createLoanWindow.ShowDialog();
+                    break;
+                default:
+                    CommonErrorMessage();
+                    break;
+            }
+
+            RefreshList();
+        }
+
+        /* Remove */
+
+        private void Remove(object sender, EventArgs e)
+        {
+            if (!CheckForSelectedItem()) return;
+            switch (_option)
+            {
+                case 1:
+                    _authorsRepository.Remove(entitiesListBox.SelectedItem as Author);
+                    break;
+                case 2:
+                    _publishersRepository.Remove(entitiesListBox.SelectedItem as Publisher);
+                    break;
+                case 3:
+                    _studentsRepository.Remove(entitiesListBox.SelectedItem as Student);
+                    break;
+                case 4:
+                    _booksRepository.Remove(entitiesListBox.SelectedItem as Book);
+                    break;
+                case 5:
+                    _loansRepository.Remove(entitiesListBox.SelectedItem as Loan);
                     break;
                 default:
                     CommonErrorMessage();
@@ -308,6 +326,39 @@ namespace Library.Presentation.Forms
 
             RefreshRepositories();
             RefreshList();
+        }
+
+        // Details 
+
+        private void Details(object sender, EventArgs e)
+        {
+            if (!CheckForSelectedItem()) return;
+            switch (_option)
+            {
+                case 1:
+                    var authorDetailsWindow = new AuthorDetails(entitiesListBox.SelectedItem as Author);
+                    authorDetailsWindow.ShowDialog();
+                    break;
+                case 2:
+                    var publisherDetailsWindow = new PublisherDetails(entitiesListBox.SelectedItem as Publisher);
+                    publisherDetailsWindow.ShowDialog();
+                    break;
+                case 3:
+                    var studentDetailsWindow = new StudentDetails(entitiesListBox.SelectedItem as Student);
+                    studentDetailsWindow.ShowDialog();
+                    break;
+                case 4:
+                    var bookDetailsWindow = new BookDetails(entitiesListBox.SelectedItem as Book);
+                    bookDetailsWindow.ShowDialog();
+                    break;
+                case 5:
+                    var loanDetailsWindow = new LoanDetails(entitiesListBox.SelectedItem as Loan);
+                    loanDetailsWindow.ShowDialog();
+                    break;
+                default:
+                    CommonErrorMessage();
+                    break;
+            }
         }
     }
 }
