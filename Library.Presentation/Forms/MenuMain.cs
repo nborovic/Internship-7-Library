@@ -260,21 +260,27 @@ namespace Library.Presentation.Forms
             switch (_option)
             {
                 case 1:
-                    var removeConfirmationBooks = MessageBox.Show($@"Removing this author will also remove all of his books and loans related to them!", @"Remove",
+                    var removeDoubleConfirmationAuthor = MessageBox.Show($@"Removing this author will also remove all of his books and loans related to them!", @"Remove",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                    if (removeConfirmationBooks != DialogResult.OK) return;
+                    if (removeDoubleConfirmationAuthor != DialogResult.OK) return;
                     _authorsRepository.Remove(entitiesListBox.SelectedItem as Author);
                     break;
                 case 2:
+                    var removeDoubleConfirmationPublisher = MessageBox.Show($@"Removing this publisher will also remove all of his books and loans related to them!", @"Remove",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (removeDoubleConfirmationPublisher != DialogResult.OK) return;
                     _publishersRepository.Remove(entitiesListBox.SelectedItem as Publisher);
                     break;
                 case 3:
+                    var removeDoubleConfirmationStudent = MessageBox.Show($@"Removing this student will also remove all related loans!", @"Remove",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (removeDoubleConfirmationStudent != DialogResult.OK) return;
                     _studentsRepository.Remove(entitiesListBox.SelectedItem as Student);
                     break;
                 case 4:
-                    var removeConfirmationLoans = MessageBox.Show($@"Removing this book will also remove all related loans!", @"Remove",
+                    var removeDoubleConfirmationBook = MessageBox.Show($@"Removing this book will also remove all related loans!", @"Remove",
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                    if (removeConfirmationLoans != DialogResult.OK) return;
+                    if (removeDoubleConfirmationBook != DialogResult.OK) return;
                     _booksRepository.Remove(entitiesListBox.SelectedItem as Book);
                     break;
                 case 5:

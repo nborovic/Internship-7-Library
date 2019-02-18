@@ -60,7 +60,7 @@ namespace Library.Presentation.Forms.StudentForms
         {
             // Bigger range if someone is repeating a year
             for (var grade = 1; grade <= 8; grade++)
-                if (classComboBox.SelectedItem.ToString().Contains(grade.ToString()) && year >= grade + 7 &&
+                if (classComboBox.SelectedItem.ToString().Contains(grade.ToString()) && year >= grade + 4 &&
                     year <= grade + 7)
                     return true;
 
