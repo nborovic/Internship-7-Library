@@ -59,16 +59,54 @@ namespace Library.Presentation.Forms.LoanForms
 
         private void SearchAutoComplete()
         {
-            searchBook.AutoCompleteCustomSource.Clear();
-            searchStudent.AutoCompleteCustomSource.Clear();
+            searchEntity.AutoCompleteCustomSource.Clear();
 
-            _booksRepository.GetAll().ForEach(book => searchBook.AutoCompleteCustomSource.Add(book.Name));
-            _booksRepository.GetAll().ForEach(book => searchBook.AutoCompleteCustomSource.Add(book.Author.FirstName + " " + book.Author.LastName));
-            _booksRepository.GetAll().ForEach(book => searchBook.AutoCompleteCustomSource.Add(book.Author.LastName + " " + book.Author.FirstName));
-            Enum.GetValues(typeof(Genre)).Cast<Genre>().ToList().ForEach(genre => searchBook.AutoCompleteCustomSource.Add(genre.ToString()));
+            _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.FirstName + " " + student.LastName));
+            _studentsRepository.GetAll().ForEach(student => searchEntity.AutoCompleteCustomSource.Add(student.LastName + " " + student.FirstName));
+        }
 
-            _studentsRepository.GetAll().ForEach(student => searchStudent.AutoCompleteCustomSource.Add(student.FirstName + " " + student.LastName));
-            _studentsRepository.GetAll().ForEach(student => searchStudent.AutoCompleteCustomSource.Add(student.LastName + " " + student.FirstName));
+        private void SearchStudent(object sender, EventArgs e)
+        {
+            if (!searchCheckBox.Checked)
+            {
+                studentsListBox.Items.Clear();
+                _studentsRepository.GetAll().ForEach(student =>
+                {
+                    if ((student.FirstName.ToLower() + " " + student.LastName.ToLower()).Contains(searchEntity.Text.ToLower()) ||
+                        (student.LastName.ToLower() + " " + student.FirstName.ToLower()).Contains(searchEntity.Text.ToLower()))
+                        studentsListBox.Items.Add(student);
+                });
+            }
+            else
+            {
+                booksListBox.Items.Clear();
+                _booksRepository.GetAll().ForEach(book =>
+                {
+                    if (book.Name.ToLower().Contains(searchEntity.Text.ToLower()) ||
+                        (book.Author.FirstName.ToLower() + " " + book.Author.LastName.ToLower()).Contains(
+                            searchEntity.Text.ToLower()) ||
+                        (book.Author.LastName.ToLower() + " " + book.Author.FirstName.ToLower()).Contains(
+                            searchEntity.Text.ToLower()) ||
+                        book.Genre.ToString().ToLower().Contains(searchEntity.Text.ToLower()))
+                        booksListBox.Items.Add(book);
+                });
+            }
+        }
+
+        private void SearchCheckedChanged(object sender, EventArgs e)
+        {
+            searchEntity.AutoCompleteCustomSource.Clear();
+
+            if (searchCheckBox.Checked)
+            {
+                _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Name));
+                _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Author.FirstName + " " + book.Author.LastName));
+                _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Author.LastName + " " + book.Author.FirstName));
+                Enum.GetValues(typeof(Genre)).Cast<Genre>().ToList().ForEach(genre => searchEntity.AutoCompleteCustomSource.Add(genre.ToString()));
+            }
+            else
+                SearchAutoComplete();
+
         }
 
         private bool CheckInputFields()
@@ -92,34 +130,6 @@ namespace Library.Presentation.Forms.LoanForms
             MessageBox.Show(@"Selected book has no available copies!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
 
-        }
-
-        private void SearchStudent(object sender, EventArgs e)
-        {
-            studentsListBox.Items.Clear();
-
-            _studentsRepository.GetAll().ForEach(student =>
-            {
-                if ((student.FirstName.ToLower() + " " + student.LastName.ToLower()).Contains(searchStudent.Text.ToLower()) ||
-                    (student.LastName.ToLower() + " " + student.FirstName.ToLower()).Contains(searchStudent.Text.ToLower()))
-                    studentsListBox.Items.Add(student);
-            });
-        }
-
-        private void SearchBook(object sender, EventArgs e)
-        {
-            booksListBox.Items.Clear();
-
-            _booksRepository.GetAll().ForEach(book =>
-            {
-                if (book.Name.ToLower().Contains(searchBook.Text.ToLower()) ||
-                    (book.Author.FirstName.ToLower() + " " + book.Author.LastName.ToLower()).Contains(
-                        searchBook.Text.ToLower()) ||
-                    (book.Author.LastName.ToLower() + " " + book.Author.FirstName.ToLower()).Contains(
-                        searchBook.Text.ToLower()) ||
-                    book.Genre.ToString().ToLower().Contains(searchBook.ToString().ToLower()))
-                    booksListBox.Items.Add(book);
-            });
         }
 
         private void CreateEdit(object sender, EventArgs e)

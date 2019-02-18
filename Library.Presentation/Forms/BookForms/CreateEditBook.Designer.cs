@@ -38,14 +38,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.searchPublisher = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.searchAuthor = new System.Windows.Forms.TextBox();
+            this.searchEntity = new System.Windows.Forms.TextBox();
             this.numberOfCopiesTextBox = new System.Windows.Forms.MaskedTextBox();
             this.numberOfPagesTextBox = new System.Windows.Forms.MaskedTextBox();
             this.genreComboBox = new System.Windows.Forms.ComboBox();
             this.backButton = new System.Windows.Forms.Button();
+            this.searchCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +59,7 @@
             // 
             // createEditButton
             // 
-            this.createEditButton.Location = new System.Drawing.Point(112, 583);
+            this.createEditButton.Location = new System.Drawing.Point(112, 546);
             this.createEditButton.Name = "createEditButton";
             this.createEditButton.Size = new System.Drawing.Size(96, 40);
             this.createEditButton.TabIndex = 9;
@@ -90,7 +89,7 @@
             this.publishersListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.publishersListBox.FormattingEnabled = true;
             this.publishersListBox.ItemHeight = 20;
-            this.publishersListBox.Location = new System.Drawing.Point(33, 444);
+            this.publishersListBox.Location = new System.Drawing.Point(36, 406);
             this.publishersListBox.Name = "publishersListBox";
             this.publishersListBox.Size = new System.Drawing.Size(263, 124);
             this.publishersListBox.TabIndex = 12;
@@ -139,53 +138,32 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(106, 426);
+            this.label6.Location = new System.Drawing.Point(109, 388);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 15);
             this.label6.TabIndex = 20;
             this.label6.Text = "Select publisher";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(111, 385);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 13);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Search publisher";
-            // 
-            // searchPublisher
-            // 
-            this.searchPublisher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.searchPublisher.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.searchPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchPublisher.Location = new System.Drawing.Point(33, 401);
-            this.searchPublisher.Name = "searchPublisher";
-            this.searchPublisher.Size = new System.Drawing.Size(263, 22);
-            this.searchPublisher.TabIndex = 21;
-            this.searchPublisher.TextChanged += new System.EventHandler(this.SearchPublisher);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(115, 191);
+            this.label8.Location = new System.Drawing.Point(84, 188);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 13);
+            this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 25;
-            this.label8.Text = "Search author";
+            this.label8.Text = "Search";
             // 
-            // searchAuthor
+            // searchEntity
             // 
-            this.searchAuthor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.searchAuthor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.searchAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchAuthor.Location = new System.Drawing.Point(33, 207);
-            this.searchAuthor.Name = "searchAuthor";
-            this.searchAuthor.Size = new System.Drawing.Size(263, 22);
-            this.searchAuthor.TabIndex = 24;
-            this.searchAuthor.TextChanged += new System.EventHandler(this.SearchAuthor);
+            this.searchEntity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.searchEntity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.searchEntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchEntity.Location = new System.Drawing.Point(33, 204);
+            this.searchEntity.Name = "searchEntity";
+            this.searchEntity.Size = new System.Drawing.Size(153, 22);
+            this.searchEntity.TabIndex = 24;
+            this.searchEntity.TextChanged += new System.EventHandler(this.SearchAuthor);
             // 
             // numberOfCopiesTextBox
             // 
@@ -215,7 +193,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 592);
+            this.backButton.Location = new System.Drawing.Point(12, 555);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(54, 23);
             this.backButton.TabIndex = 29;
@@ -223,19 +201,29 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.Back);
             // 
+            // searchCheckBox
+            // 
+            this.searchCheckBox.AutoSize = true;
+            this.searchCheckBox.Location = new System.Drawing.Point(192, 208);
+            this.searchCheckBox.Name = "searchCheckBox";
+            this.searchCheckBox.Size = new System.Drawing.Size(105, 17);
+            this.searchCheckBox.TabIndex = 30;
+            this.searchCheckBox.Text = "Search publisher";
+            this.searchCheckBox.UseVisualStyleBackColor = true;
+            this.searchCheckBox.CheckedChanged += new System.EventHandler(this.SearchCheckedChanged);
+            // 
             // CreateEditBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 643);
+            this.ClientSize = new System.Drawing.Size(333, 599);
+            this.Controls.Add(this.searchCheckBox);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.genreComboBox);
             this.Controls.Add(this.numberOfPagesTextBox);
             this.Controls.Add(this.numberOfCopiesTextBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.searchAuthor);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.searchPublisher);
+            this.Controls.Add(this.searchEntity);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -265,13 +253,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox searchPublisher;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox searchAuthor;
+        private System.Windows.Forms.TextBox searchEntity;
         private System.Windows.Forms.MaskedTextBox numberOfCopiesTextBox;
         private System.Windows.Forms.MaskedTextBox numberOfPagesTextBox;
         private System.Windows.Forms.ComboBox genreComboBox;
         private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.CheckBox searchCheckBox;
     }
 }

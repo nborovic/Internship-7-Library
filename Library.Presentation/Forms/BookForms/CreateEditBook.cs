@@ -71,35 +71,43 @@ namespace Library.Presentation.Forms.BookForms
 
         private void SearchAutoComplete()
         {
-            searchAuthor.AutoCompleteCustomSource.Clear();
-            searchPublisher.AutoCompleteCustomSource.Clear();
+            searchEntity.AutoCompleteCustomSource.Clear();
 
-            _authorsRepository.GetAll().ForEach(author => searchAuthor.AutoCompleteCustomSource.Add(author.FirstName + " " + author.LastName));
-            _authorsRepository.GetAll().ForEach(author => searchAuthor.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
-            _publishersRepository.GetAll().ForEach(publisher => searchPublisher.AutoCompleteCustomSource.Add(publisher.Name));
+            _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.FirstName + " " + author.LastName));
+            _authorsRepository.GetAll().ForEach(author => searchEntity.AutoCompleteCustomSource.Add(author.LastName + " " + author.FirstName));
         }
 
         private void SearchAuthor(object sender, EventArgs e)
         {
-            authorsListBox.Items.Clear();
-
-            _authorsRepository.GetAll().ForEach(author =>
+            if (!searchCheckBox.Checked)
             {
-                if ((author.FirstName.ToLower() + " " + author.LastName.ToLower()).Contains(searchAuthor.Text.ToLower()) || 
-                    (author.LastName.ToLower() + " " + author.FirstName.ToLower()).Contains(searchAuthor.Text.ToLower()))
-                    authorsListBox.Items.Add(author);
-            });
+                authorsListBox.Items.Clear();
+                _authorsRepository.GetAll().ForEach(author =>
+                {
+                    if ((author.FirstName.ToLower() + " " + author.LastName.ToLower()).Contains(searchEntity.Text.ToLower()) ||
+                        (author.LastName.ToLower() + " " + author.FirstName.ToLower()).Contains(searchEntity.Text.ToLower()))
+                        authorsListBox.Items.Add(author);
+                });
+            }
+            else
+            {
+                publishersListBox.Items.Clear();
+                _publishersRepository.GetAll().ForEach(publisher =>
+                {
+                    if (publisher.Name.ToLower().Contains(searchEntity.Text.ToLower()))
+                        publishersListBox.Items.Add(publisher);
+                });
+            }
         }
 
-        private void SearchPublisher(object sender, EventArgs e)
+        private void SearchCheckedChanged(object sender, EventArgs e)
         {
-            publishersListBox.Items.Clear();
+            searchEntity.AutoCompleteCustomSource.Clear();
 
-            _publishersRepository.GetAll().ForEach(publisher =>
-            {
-                if (publisher.Name.ToLower().Contains(searchPublisher.Text.ToLower()))
-                    publishersListBox.Items.Add(publisher);
-            });
+            if (searchCheckBox.Checked)
+                _publishersRepository.GetAll().ForEach(publisher => searchEntity.AutoCompleteCustomSource.Add(publisher.Name));
+            else
+                SearchAutoComplete();
         }
 
         private bool CheckInputFields()
