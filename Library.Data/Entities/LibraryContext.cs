@@ -44,17 +44,17 @@ namespace Library.Data.Entities
             modelBuilder.Entity<Publisher>().HasData(new Publisher { Id = 4, Name = "Izdavač Četvrti" });
             modelBuilder.Entity<Publisher>().HasData(new Publisher { Id = 5, Name = "Izdavač Peti" });
 
-            modelBuilder.Entity<Student>().HasData(new Student { Id = 1, FirstName = "Student", LastName = "Prvi", Birthdate = DateTime.Now.AddYears(-12), Class = "6.B", Gender = Gender.Male });
-            modelBuilder.Entity<Student>().HasData(new Student { Id = 2, FirstName = "Student", LastName = "Drugi", Birthdate = DateTime.Now.AddYears(-14), Class = "8.A", Gender = Gender.Male });
-            modelBuilder.Entity<Student>().HasData(new Student { Id = 3, FirstName = "Student", LastName = "Treći", Birthdate = DateTime.Now.AddYears(-12), Class = "6.C", Gender = Gender.Female });
-            modelBuilder.Entity<Student>().HasData(new Student { Id = 4, FirstName = "Student", LastName = "Četvrti", Birthdate = DateTime.Now.AddYears(-11), Class = "5.A", Gender = Gender.Male });
-            modelBuilder.Entity<Student>().HasData(new Student { Id = 5, FirstName = "Student", LastName = "Peti", Birthdate = DateTime.Now.AddYears(-13), Class = "7.B", Gender = Gender.Female });
+            modelBuilder.Entity<Student>().HasData(new Student { Id = 1, FirstName = "Student", LastName = "Prvi", Birthdate = DateTime.Now.AddYears(-12), Class = "6.b", Gender = Gender.Male });
+            modelBuilder.Entity<Student>().HasData(new Student { Id = 2, FirstName = "Student", LastName = "Drugi", Birthdate = DateTime.Now.AddYears(-14), Class = "8.a", Gender = Gender.Male });
+            modelBuilder.Entity<Student>().HasData(new Student { Id = 3, FirstName = "Student", LastName = "Treći", Birthdate = DateTime.Now.AddYears(-12), Class = "6.c", Gender = Gender.Female });
+            modelBuilder.Entity<Student>().HasData(new Student { Id = 4, FirstName = "Student", LastName = "Četvrti", Birthdate = DateTime.Now.AddYears(-11), Class = "5.a", Gender = Gender.Male });
+            modelBuilder.Entity<Student>().HasData(new Student { Id = 5, FirstName = "Student", LastName = "Peti", Birthdate = DateTime.Now.AddYears(-13), Class = "7.b", Gender = Gender.Female });
 
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 1, StudentId = 1, BookId = 2, PickupDate = DateTime.Now.AddDays(-40), ReturnDeadline = DateTime.Now.AddDays(10), ReturnDate = DateTime.Now.AddDays(6) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 2, StudentId = 2, BookId = 2, PickupDate = DateTime.Now.AddDays(-21), ReturnDeadline = DateTime.Now.AddDays(-4) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 3, StudentId = 3, BookId = 6, PickupDate = DateTime.Now.AddDays(-32), ReturnDeadline = DateTime.Now.AddDays(5), ReturnDate = DateTime.Now.AddDays(7) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 4, StudentId = 4, BookId = 4, PickupDate = DateTime.Now.AddDays(-38), ReturnDeadline = DateTime.Now.AddDays(15), ReturnDate = DateTime.Now.AddDays(11) });
-            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 5, StudentId = 5, BookId = 7, PickupDate = DateTime.Now.AddDays(-11), ReturnDeadline = DateTime.Now.AddDays(5), ReturnDate = DateTime.Now.AddDays(1) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 1, StudentId = 1, BookId = 2, PickupDate = DateTime.Now.AddDays(-11), ReturnDeadline = DateTime.Now.AddDays(10), ReturnDate = DateTime.Now.AddDays(6) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 2, StudentId = 2, BookId = 2, PickupDate = DateTime.Now.AddDays(-20), ReturnDeadline = DateTime.Now.AddDays(1) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 3, StudentId = 3, BookId = 6, PickupDate = DateTime.Now.AddDays(-16), ReturnDeadline = DateTime.Now.AddDays(5), ReturnDate = DateTime.Now.AddDays(7) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 4, StudentId = 4, BookId = 4, PickupDate = DateTime.Now.AddDays(-121), ReturnDeadline = DateTime.Now.AddDays(-100) });
+            modelBuilder.Entity<Loan>().HasData(new Loan { Id = 5, StudentId = 5, BookId = 7, PickupDate = DateTime.Now.AddDays(-41), ReturnDeadline = DateTime.Now.AddDays(-20) });
 
             modelBuilder.Entity<Loan>()
                 .HasOne(loan => loan.Book)

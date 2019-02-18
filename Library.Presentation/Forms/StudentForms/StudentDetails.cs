@@ -71,7 +71,7 @@ namespace Library.Presentation.Forms.StudentForms
         {
             if (_currentLoan == null)
             {
-                MessageBox.Show(@"No current loan!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(@"No current loan!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

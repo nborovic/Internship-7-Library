@@ -137,6 +137,10 @@
     <Compile Include="Migrations\20190218155604_InitialCreate.designer.cs">
       <DependentUpon>20190218155604_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190218211540_ChangedSeedData.cs" />
+    <Compile Include="Migrations\20190218211540_ChangedSeedData.designer.cs">
+      <DependentUpon>20190218211540_ChangedSeedData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
