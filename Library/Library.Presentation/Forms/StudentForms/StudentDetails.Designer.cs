@@ -44,7 +44,7 @@
             this.studentFullName.BackColor = System.Drawing.SystemColors.Menu;
             this.studentFullName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.studentFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studentFullName.Location = new System.Drawing.Point(40, 22);
+            this.studentFullName.Location = new System.Drawing.Point(25, 22);
             this.studentFullName.Name = "studentFullName";
             this.studentFullName.ReadOnly = true;
             this.studentFullName.Size = new System.Drawing.Size(290, 24);
@@ -57,7 +57,7 @@
             this.studentClass.BackColor = System.Drawing.SystemColors.Menu;
             this.studentClass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.studentClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studentClass.Location = new System.Drawing.Point(40, 46);
+            this.studentClass.Location = new System.Drawing.Point(25, 46);
             this.studentClass.Name = "studentClass";
             this.studentClass.ReadOnly = true;
             this.studentClass.Size = new System.Drawing.Size(290, 17);
@@ -69,7 +69,7 @@
             // 
             this.birthdateLabel.AutoSize = true;
             this.birthdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birthdateLabel.Location = new System.Drawing.Point(36, 82);
+            this.birthdateLabel.Location = new System.Drawing.Point(21, 82);
             this.birthdateLabel.Name = "birthdateLabel";
             this.birthdateLabel.Size = new System.Drawing.Size(82, 20);
             this.birthdateLabel.TabIndex = 6;
@@ -79,7 +79,7 @@
             // 
             this.genderLabel.AutoSize = true;
             this.genderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderLabel.Location = new System.Drawing.Point(36, 102);
+            this.genderLabel.Location = new System.Drawing.Point(21, 102);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(71, 20);
             this.genderLabel.TabIndex = 7;
@@ -90,7 +90,7 @@
             this.loansListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loansListBox.FormattingEnabled = true;
             this.loansListBox.ItemHeight = 20;
-            this.loansListBox.Location = new System.Drawing.Point(40, 167);
+            this.loansListBox.Location = new System.Drawing.Point(25, 167);
             this.loansListBox.Name = "loansListBox";
             this.loansListBox.Size = new System.Drawing.Size(290, 184);
             this.loansListBox.TabIndex = 10;
@@ -99,7 +99,7 @@
             // 
             this.studentLoans.AutoSize = true;
             this.studentLoans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.studentLoans.Location = new System.Drawing.Point(37, 149);
+            this.studentLoans.Location = new System.Drawing.Point(22, 149);
             this.studentLoans.Name = "studentLoans";
             this.studentLoans.Size = new System.Drawing.Size(105, 15);
             this.studentLoans.TabIndex = 11;
@@ -110,7 +110,7 @@
             this.currentLoanLabel.BackColor = System.Drawing.SystemColors.Menu;
             this.currentLoanLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.currentLoanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentLoanLabel.Location = new System.Drawing.Point(40, 362);
+            this.currentLoanLabel.Location = new System.Drawing.Point(25, 362);
             this.currentLoanLabel.Name = "currentLoanLabel";
             this.currentLoanLabel.ReadOnly = true;
             this.currentLoanLabel.Size = new System.Drawing.Size(290, 17);
@@ -120,7 +120,7 @@
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(140, 388);
+            this.returnButton.Location = new System.Drawing.Point(125, 388);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(83, 31);
             this.returnButton.TabIndex = 16;
@@ -132,7 +132,7 @@
             // 
             this.borrowedBooks.AutoSize = true;
             this.borrowedBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.borrowedBooks.Location = new System.Drawing.Point(36, 122);
+            this.borrowedBooks.Location = new System.Drawing.Point(21, 122);
             this.borrowedBooks.Name = "borrowedBooks";
             this.borrowedBooks.Size = new System.Drawing.Size(132, 20);
             this.borrowedBooks.TabIndex = 17;
@@ -142,7 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 431);
+            this.ClientSize = new System.Drawing.Size(342, 431);
             this.Controls.Add(this.borrowedBooks);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.currentLoanLabel);
@@ -153,7 +153,7 @@
             this.Controls.Add(this.studentClass);
             this.Controls.Add(this.studentFullName);
             this.Name = "StudentDetails";
-            this.Text = "Student";
+            this.Text = "Student Details";
             this.ResumeLayout(false);
             this.PerformLayout();
 

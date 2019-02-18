@@ -1,4 +1,4 @@
-﻿namespace Library.Presentation.Forms
+﻿namespace Library.Presentation.Forms.StudentForms
 {
     partial class CreateEditStudent
     {
@@ -47,7 +47,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 61);
+            this.label2.Location = new System.Drawing.Point(28, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 15);
             this.label2.TabIndex = 10;
@@ -57,7 +57,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 24);
+            this.label1.Location = new System.Drawing.Point(28, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 15);
             this.label1.TabIndex = 9;
@@ -65,9 +65,9 @@
             // 
             // createEditButton
             // 
-            this.createEditButton.Location = new System.Drawing.Point(78, 221);
+            this.createEditButton.Location = new System.Drawing.Point(75, 209);
             this.createEditButton.Name = "createEditButton";
-            this.createEditButton.Size = new System.Drawing.Size(87, 23);
+            this.createEditButton.Size = new System.Drawing.Size(92, 33);
             this.createEditButton.TabIndex = 8;
             this.createEditButton.Text = "Create";
             this.createEditButton.UseVisualStyleBackColor = true;
@@ -75,14 +75,14 @@
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(32, 77);
+            this.lastNameTextBox.Location = new System.Drawing.Point(31, 68);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(188, 20);
             this.lastNameTextBox.TabIndex = 7;
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(32, 40);
+            this.firstNameTextBox.Location = new System.Drawing.Point(31, 31);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(188, 20);
             this.firstNameTextBox.TabIndex = 6;
@@ -90,7 +90,7 @@
             // classComboBox
             // 
             this.classComboBox.FormattingEnabled = true;
-            this.classComboBox.Location = new System.Drawing.Point(32, 115);
+            this.classComboBox.Location = new System.Drawing.Point(31, 106);
             this.classComboBox.Name = "classComboBox";
             this.classComboBox.Size = new System.Drawing.Size(188, 21);
             this.classComboBox.TabIndex = 11;
@@ -99,7 +99,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 100);
+            this.label3.Location = new System.Drawing.Point(29, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 15);
             this.label3.TabIndex = 12;
@@ -107,7 +107,7 @@
             // 
             // birthdayDatePicker
             // 
-            this.birthdayDatePicker.Location = new System.Drawing.Point(32, 157);
+            this.birthdayDatePicker.Location = new System.Drawing.Point(31, 148);
             this.birthdayDatePicker.Name = "birthdayDatePicker";
             this.birthdayDatePicker.Size = new System.Drawing.Size(188, 20);
             this.birthdayDatePicker.TabIndex = 14;
@@ -116,7 +116,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(30, 139);
+            this.label5.Location = new System.Drawing.Point(28, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 15);
             this.label5.TabIndex = 15;
@@ -148,7 +148,7 @@
             // 
             this.genderPanel.Controls.Add(this.maleRadioButton);
             this.genderPanel.Controls.Add(this.femaleRadioButton);
-            this.genderPanel.Location = new System.Drawing.Point(33, 183);
+            this.genderPanel.Location = new System.Drawing.Point(32, 174);
             this.genderPanel.Name = "genderPanel";
             this.genderPanel.Size = new System.Drawing.Size(188, 23);
             this.genderPanel.TabIndex = 18;
@@ -157,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(253, 256);
+            this.ClientSize = new System.Drawing.Size(253, 257);
             this.Controls.Add(this.genderPanel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.birthdayDatePicker);
@@ -169,7 +169,7 @@
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Name = "CreateEditStudent";
-            this.Text = "CreateEditStudent";
+            this.Text = "Student";
             this.genderPanel.ResumeLayout(false);
             this.genderPanel.PerformLayout();
             this.ResumeLayout(false);

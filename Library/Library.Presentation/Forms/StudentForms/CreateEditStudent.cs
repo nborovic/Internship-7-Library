@@ -4,8 +4,9 @@ using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Data.Enums;
 using Library.Domain.Repositories;
+using Library.Infrastructure.Extensions;
 
-namespace Library.Presentation.Forms
+namespace Library.Presentation.Forms.StudentForms
 {
     public partial class CreateEditStudent : Form
     {
@@ -58,8 +59,9 @@ namespace Library.Presentation.Forms
 
         private bool CheckIfBirthdayAndGradeCoincide(int year)
         {
+            // Bigger range if someone is repeating a year
             for (var grade = 1; grade <= 8; grade++)
-                if (classComboBox.SelectedItem.ToString().Contains(grade.ToString()) && year >= grade + 4 &&
+                if (classComboBox.SelectedItem.ToString().Contains(grade.ToString()) && year >= grade + 7 &&
                     year <= grade + 7)
                     return true;
 
@@ -72,6 +74,14 @@ namespace Library.Presentation.Forms
                 !maleRadioButton.Checked && !femaleRadioButton.Checked)
             {
                 MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!firstNameTextBox.Text.CheckForForbiddenCharacters() ||
+                !lastNameTextBox.Text.CheckForForbiddenCharacters())
+            {
+                MessageBox.Show(@"Forbidden characters used in first name or last name input!", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

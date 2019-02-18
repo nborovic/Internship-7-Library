@@ -14,13 +14,17 @@ namespace Library.Infrastructure.Extensions
             return text;
         }
 
-        public static string TrimAndRemoveWhiteSpaces(this string text)
+        public static bool CheckForForbiddenCharacters(this string text)
         {
-            text = text.Trim();
-            var regex = new Regex(@"\s{1,}");
-            while (regex.IsMatch(text))
-                text = regex.Replace(text, "", 1);
-            return text;
+            var forbiddenCharacters = "-ß¤+!§łŁ×÷€\\@#$%^&*(),.?\"':}{<>|0123456789";
+
+            foreach (var character in forbiddenCharacters)
+            {
+                if (text.Contains(character.ToString()))
+                    return false;
+            }
+
+            return true;
         }
 
         public static string FirstLetterCapitalization(this string text)
@@ -30,8 +34,8 @@ namespace Library.Infrastructure.Extensions
 
         public static string NameFormatting(this string text)
         {
-            var textWithoutMultipleWhiteSpaces = TrimAndRemoveMultipleWhiteSpaces(text);
-            return FirstLetterCapitalization(textWithoutMultipleWhiteSpaces);
+            var formattedString = TrimAndRemoveMultipleWhiteSpaces(text);
+            return FirstLetterCapitalization(formattedString);
         }
     }
 }

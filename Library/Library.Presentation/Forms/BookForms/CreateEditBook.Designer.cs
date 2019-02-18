@@ -34,7 +34,6 @@
             this.authorsListBox = new System.Windows.Forms.ListBox();
             this.publishersListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.genreTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.searchAuthor = new System.Windows.Forms.TextBox();
             this.numberOfCopiesTextBox = new System.Windows.Forms.MaskedTextBox();
             this.numberOfPagesTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.genreComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -103,13 +103,6 @@
             this.label2.Size = new System.Drawing.Size(46, 15);
             this.label2.TabIndex = 14;
             this.label2.Text = "Genre";
-            // 
-            // genreTextBox
-            // 
-            this.genreTextBox.Location = new System.Drawing.Point(33, 74);
-            this.genreTextBox.Name = "genreTextBox";
-            this.genreTextBox.Size = new System.Drawing.Size(263, 20);
-            this.genreTextBox.TabIndex = 13;
             // 
             // label3
             // 
@@ -211,11 +204,20 @@
             this.numberOfPagesTextBox.TabIndex = 27;
             this.numberOfPagesTextBox.ValidatingType = typeof(int);
             // 
+            // genreComboBox
+            // 
+            this.genreComboBox.FormattingEnabled = true;
+            this.genreComboBox.Location = new System.Drawing.Point(33, 76);
+            this.genreComboBox.Name = "genreComboBox";
+            this.genreComboBox.Size = new System.Drawing.Size(263, 21);
+            this.genreComboBox.TabIndex = 28;
+            // 
             // CreateEditBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 643);
+            this.Controls.Add(this.genreComboBox);
             this.Controls.Add(this.numberOfPagesTextBox);
             this.Controls.Add(this.numberOfCopiesTextBox);
             this.Controls.Add(this.label8);
@@ -227,7 +229,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.genreTextBox);
             this.Controls.Add(this.publishersListBox);
             this.Controls.Add(this.authorsListBox);
             this.Controls.Add(this.label1);
@@ -248,7 +249,6 @@
         private System.Windows.Forms.ListBox authorsListBox;
         private System.Windows.Forms.ListBox publishersListBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox genreTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -259,5 +259,6 @@
         private System.Windows.Forms.TextBox searchAuthor;
         private System.Windows.Forms.MaskedTextBox numberOfCopiesTextBox;
         private System.Windows.Forms.MaskedTextBox numberOfPagesTextBox;
+        private System.Windows.Forms.ComboBox genreComboBox;
     }
 }

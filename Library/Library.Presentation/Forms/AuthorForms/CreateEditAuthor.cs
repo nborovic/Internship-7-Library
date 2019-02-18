@@ -47,9 +47,17 @@ namespace Library.Presentation.Forms
                 return false;
             }
 
+            if (!firstNameTextBox.Text.CheckForForbiddenCharacters() ||
+                !lastNameTextBox.Text.CheckForForbiddenCharacters())
+            {
+                MessageBox.Show(@"Forbidden characters used in first name or last name input!", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (firstNameTextBox.Text.NameFormatting().Length < 30 ||
                 lastNameTextBox.Text.NameFormatting().Length < 30) return true;
-            MessageBox.Show(@"First name or last name input is too long! (max: 30 characters)", "Error",
+            MessageBox.Show(@"First name or last name input is too long! (max: 30 characters)", @"Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
 

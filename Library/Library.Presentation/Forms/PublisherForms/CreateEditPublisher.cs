@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Infrastructure.Extensions;
 
 namespace Library.Presentation.Forms.PublisherForms
 {
@@ -38,6 +39,13 @@ namespace Library.Presentation.Forms.PublisherForms
 
         public bool CheckInputFields()
         {
+            if (!nameTextBox.Text.CheckForForbiddenCharacters())
+            {
+                MessageBox.Show(@"Forbidden characters used in name input!", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (nameTextBox.Text != "") return true;
             MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;

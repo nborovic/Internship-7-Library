@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Library.Data.Enums;
 using Library.Domain.Repositories;
 using Library.Presentation.Forms.BookForms;
 using Library.Presentation.Forms.LoanForms;
 using Library.Presentation.Forms.PublisherForms;
+using Library.Presentation.Forms.StudentForms;
 
 namespace Library.Presentation.Forms
 {
@@ -141,6 +144,7 @@ namespace Library.Presentation.Forms
                     _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.FirstName + " " + loan.Student.LastName));
                     _loansRepository.GetAll().ForEach(loan => searchEntity.AutoCompleteCustomSource.Add(loan.Student.LastName + " " + loan.Student.FirstName));
                     _booksRepository.GetAll().ForEach(book => searchEntity.AutoCompleteCustomSource.Add(book.Name));
+                    Enum.GetValues(typeof(Genre)).Cast<Genre>().ToList().ForEach(genre => searchEntity.AutoCompleteCustomSource.Add(genre.ToString()));
                     break;
                 default:
                     CommonErrorMessage();

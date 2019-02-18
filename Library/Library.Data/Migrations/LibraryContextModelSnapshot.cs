@@ -76,8 +76,7 @@ namespace Library.Data.Migrations
 
                     b.Property<int>("AuthorId");
 
-                    b.Property<string>("Genre")
-                        .HasMaxLength(50);
+                    b.Property<int>("Genre");
 
                     b.Property<string>("Name")
                         .HasMaxLength(50);
@@ -101,7 +100,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Genre = "sci-fi",
+                            Genre = 2,
                             Name = "Knjiga Prva",
                             NumberOfCopies = 15,
                             NumberOfPages = 115,
@@ -111,7 +110,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 2,
                             AuthorId = 2,
-                            Genre = "action",
+                            Genre = 0,
                             Name = "Knjiga Druga",
                             NumberOfCopies = 21,
                             NumberOfPages = 55,
@@ -121,7 +120,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 3,
                             AuthorId = 3,
-                            Genre = "drama",
+                            Genre = 3,
                             Name = "Knjiga Treća",
                             NumberOfCopies = 11,
                             NumberOfPages = 315,
@@ -131,7 +130,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 4,
                             AuthorId = 4,
-                            Genre = "drama",
+                            Genre = 3,
                             Name = "Knjiga Četvrta",
                             NumberOfCopies = 14,
                             NumberOfPages = 125,
@@ -141,7 +140,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 5,
                             AuthorId = 5,
-                            Genre = "horror",
+                            Genre = 1,
                             Name = "Knjiga Peta",
                             NumberOfCopies = 12,
                             NumberOfPages = 135,
@@ -151,7 +150,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 6,
                             AuthorId = 1,
-                            Genre = "sci-fi",
+                            Genre = 2,
                             Name = "Knjiga Šesta",
                             NumberOfCopies = 18,
                             NumberOfPages = 415,
@@ -161,7 +160,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 7,
                             AuthorId = 2,
-                            Genre = "sci-fi",
+                            Genre = 5,
                             Name = "Knjiga Sedma",
                             NumberOfCopies = 16,
                             NumberOfPages = 105,
@@ -171,7 +170,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 8,
                             AuthorId = 3,
-                            Genre = "horror",
+                            Genre = 1,
                             Name = "Knjiga Osma",
                             NumberOfCopies = 21,
                             NumberOfPages = 55,
@@ -181,7 +180,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 9,
                             AuthorId = 4,
-                            Genre = "action",
+                            Genre = 0,
                             Name = "Knjiga Deveta",
                             NumberOfCopies = 26,
                             NumberOfPages = 422,
@@ -191,7 +190,7 @@ namespace Library.Data.Migrations
                         {
                             Id = 10,
                             AuthorId = 5,
-                            Genre = "action",
+                            Genre = 0,
                             Name = "Knjiga Deseta",
                             NumberOfCopies = 38,
                             NumberOfPages = 88,
@@ -228,44 +227,44 @@ namespace Library.Data.Migrations
                         {
                             Id = 1,
                             BookId = 2,
-                            PickupDate = new DateTime(2019, 1, 2, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 17, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 21, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 9, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDate = new DateTime(2019, 2, 24, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDeadline = new DateTime(2019, 2, 28, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             StudentId = 1
                         },
                         new
                         {
                             Id = 2,
                             BookId = 2,
-                            PickupDate = new DateTime(2019, 1, 21, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 7, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 28, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDeadline = new DateTime(2019, 2, 14, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             StudentId = 2
                         },
                         new
                         {
                             Id = 3,
                             BookId = 6,
-                            PickupDate = new DateTime(2019, 1, 10, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 18, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 16, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 17, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDate = new DateTime(2019, 2, 25, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDeadline = new DateTime(2019, 2, 23, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             StudentId = 3
                         },
                         new
                         {
                             Id = 4,
                             BookId = 4,
-                            PickupDate = new DateTime(2019, 1, 4, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 22, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 26, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 1, 11, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDate = new DateTime(2019, 3, 1, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDeadline = new DateTime(2019, 3, 5, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             StudentId = 4
                         },
                         new
                         {
                             Id = 5,
                             BookId = 7,
-                            PickupDate = new DateTime(2019, 1, 31, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDate = new DateTime(2019, 2, 12, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
-                            ReturnDeadline = new DateTime(2019, 2, 16, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            PickupDate = new DateTime(2019, 2, 7, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDate = new DateTime(2019, 2, 19, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
+                            ReturnDeadline = new DateTime(2019, 2, 23, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             StudentId = 5
                         });
                 });
@@ -338,7 +337,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Birthdate = new DateTime(2007, 2, 11, 11, 16, 16, 785, DateTimeKind.Local).AddTicks(2839),
+                            Birthdate = new DateTime(2007, 2, 18, 16, 56, 3, 844, DateTimeKind.Local).AddTicks(8861),
                             Class = "6.B",
                             FirstName = "Student",
                             Gender = 0,
@@ -347,7 +346,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 2,
-                            Birthdate = new DateTime(2005, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2005, 2, 18, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             Class = "8.A",
                             FirstName = "Student",
                             Gender = 0,
@@ -356,7 +355,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 3,
-                            Birthdate = new DateTime(2007, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2007, 2, 18, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             Class = "6.C",
                             FirstName = "Student",
                             Gender = 1,
@@ -365,7 +364,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 4,
-                            Birthdate = new DateTime(2008, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2008, 2, 18, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             Class = "5.A",
                             FirstName = "Student",
                             Gender = 0,
@@ -374,7 +373,7 @@ namespace Library.Data.Migrations
                         new
                         {
                             Id = 5,
-                            Birthdate = new DateTime(2006, 2, 11, 11, 16, 16, 788, DateTimeKind.Local).AddTicks(2851),
+                            Birthdate = new DateTime(2006, 2, 18, 16, 56, 3, 847, DateTimeKind.Local).AddTicks(8910),
                             Class = "7.B",
                             FirstName = "Student",
                             Gender = 1,

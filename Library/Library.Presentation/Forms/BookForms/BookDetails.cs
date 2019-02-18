@@ -20,7 +20,7 @@ namespace Library.Presentation.Forms.BookForms
         private void RefreshData()
         {
             bookName.Text = _selectedBook.Name;
-            bookGenre.Text = _selectedBook.Genre;
+            bookGenre.Text = _selectedBook.Genre.ToString();
             numberOfPagesLabel.Text += _selectedBook.NumberOfPages;
             authorLabel.Text += _selectedBook.Author.FirstName + @" " +_selectedBook.Author.LastName;
             publisherLabel.Text += _selectedBook.Publisher.Name;

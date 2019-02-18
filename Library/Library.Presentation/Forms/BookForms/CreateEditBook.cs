@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Library.Data.Enums;
 using Library.Domain.Repositories;
 using Library.Infrastructure.Extensions;
 
@@ -25,6 +27,7 @@ namespace Library.Presentation.Forms.BookForms
 
             createEditButton.Text = @"Edit";
             RefreshPublishersAndAuthorsList();
+            RefreshGenres();
             SearchAutoComplete();
         }
 
@@ -40,6 +43,7 @@ namespace Library.Presentation.Forms.BookForms
 
             createEditButton.Text = @"Edit";
             RefreshPublishersAndAuthorsList();
+            RefreshGenres();
             FillInputFields();
             SearchAutoComplete();
         }
@@ -47,7 +51,7 @@ namespace Library.Presentation.Forms.BookForms
         public void FillInputFields()
         {
             nameTextBox.Text = _bookToEdit.Name;
-            genreTextBox.Text = _bookToEdit.Genre;
+            genreComboBox.Text = _bookToEdit.Genre.ToString();
             numberOfCopiesTextBox.Text = _bookToEdit.NumberOfCopies.ToString();
             numberOfPagesTextBox.Text = _bookToEdit.NumberOfPages.ToString();
             authorsListBox.Text = _bookToEdit.Author.ToString();
@@ -58,6 +62,11 @@ namespace Library.Presentation.Forms.BookForms
         {
             _authorsRepository.GetAll().ForEach(author => authorsListBox.Items.Add(author));
             _publishersRepository.GetAll().ForEach(publisher => publishersListBox.Items.Add(publisher));
+        }
+
+        private void RefreshGenres()
+        {
+            Enum.GetValues(typeof(Genre)).Cast<Genre>().ToList().ForEach(genre => genreComboBox.Items.Add(genre));
         }
 
         private void SearchAutoComplete()
@@ -95,11 +104,18 @@ namespace Library.Presentation.Forms.BookForms
 
         private bool CheckInputFields()
         {
-            if (nameTextBox.Text == "" && genreTextBox.Text == "" && numberOfCopiesTextBox.Text == "" &&
-                numberOfPagesTextBox.Text == "" && authorsListBox.SelectedItem == null &&
-                publishersListBox.SelectedItem != null)
+            if (nameTextBox.Text == "" || genreComboBox.SelectedItem == null || numberOfCopiesTextBox.Text == "" ||
+                numberOfPagesTextBox.Text == "" && authorsListBox.SelectedItem == null ||
+                publishersListBox.SelectedItem == null)
             {
                 MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!nameTextBox.Text.CheckForForbiddenCharacters())
+            {
+                MessageBox.Show(@"Forbidden characters used in name input!", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -118,7 +134,7 @@ namespace Library.Presentation.Forms.BookForms
                 var newBook = new Book
                 {
                     Name = nameTextBox.Text,
-                    Genre = genreTextBox.Text,
+                    Genre = (Genre)genreComboBox.SelectedItem,
                     NumberOfCopies = int.Parse(numberOfCopiesTextBox.Text),
                     NumberOfPages = int.Parse(numberOfPagesTextBox.Text),
                     AuthorId = ((Author)authorsListBox.SelectedItem).Id,
@@ -132,7 +148,7 @@ namespace Library.Presentation.Forms.BookForms
                 _bookToEdit.Name = nameTextBox.Text;
                 _bookToEdit.AuthorId = ((Author) authorsListBox.SelectedItem).Id;
                 _bookToEdit.PublisherId = ((Publisher) publishersListBox.SelectedItem).Id;
-                _bookToEdit.Genre = genreTextBox.Text;
+                _bookToEdit.Genre = (Genre)genreComboBox.SelectedItem;
                 _bookToEdit.NumberOfPages = int.Parse(numberOfPagesTextBox.Text);
                 _bookToEdit.NumberOfCopies = int.Parse(numberOfCopiesTextBox.Text);
 

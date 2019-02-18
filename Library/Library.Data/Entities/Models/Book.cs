@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Library.Data.Enums;
 
 namespace Library.Data.Entities.Models
 {
@@ -11,7 +12,7 @@ namespace Library.Data.Entities.Models
         [MaxLength(50)] public string Name { get; set; }
         public int NumberOfPages { get; set; }
         public int NumberOfCopies { get; set; }
-        [MaxLength(50)] public string Genre { get; set; }
+        public Genre Genre { get; set; }
         public Author Author { get; set; }
         public int AuthorId { get; set; }
         public Publisher Publisher { get; set; }
@@ -20,7 +21,7 @@ namespace Library.Data.Entities.Models
 
         public override string ToString()
         {
-            return $"{Id} | {Name} | {Author.LastName}";
+            return $"{Id} | {Name} | {Genre.ToString()} | {Author.LastName}";
         }
 
         public int GetNumberOfTakenCopies()

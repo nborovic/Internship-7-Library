@@ -45,9 +45,9 @@
             // 
             // createEditButton
             // 
-            this.createEditButton.Location = new System.Drawing.Point(64, 60);
+            this.createEditButton.Location = new System.Drawing.Point(65, 60);
             this.createEditButton.Name = "createEditButton";
-            this.createEditButton.Size = new System.Drawing.Size(85, 25);
+            this.createEditButton.Size = new System.Drawing.Size(87, 34);
             this.createEditButton.TabIndex = 6;
             this.createEditButton.Text = "Create";
             this.createEditButton.UseVisualStyleBackColor = true;
@@ -64,7 +64,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 103);
+            this.ClientSize = new System.Drawing.Size(226, 106);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.createEditButton);
             this.Controls.Add(this.nameTextBox);
