@@ -76,6 +76,14 @@ namespace Library.Presentation.Forms.StudentForms
                 return false;
             }
 
+            if (firstNameTextBox.Text.NameFormatting().Length > 30 ||
+                lastNameTextBox.Text.NameFormatting().Length > 30)
+            {
+                MessageBox.Show(@"First name or last name input is too long! (max: 30 characters)", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (!firstNameTextBox.Text.CheckForForbiddenCharacters() ||
                 !lastNameTextBox.Text.CheckForForbiddenCharacters())
             {

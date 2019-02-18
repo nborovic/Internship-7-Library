@@ -46,6 +46,13 @@ namespace Library.Presentation.Forms.PublisherForms
                 return false;
             }
 
+            if (nameTextBox.Text.NameFormatting().Length > 50)
+            {
+                MessageBox.Show(@"Name input is too long! (max: 50 characters)", @"Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             if (nameTextBox.Text != "") return true;
             MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;

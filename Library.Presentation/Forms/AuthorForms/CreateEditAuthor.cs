@@ -41,7 +41,7 @@ namespace Library.Presentation.Forms.AuthorForms
 
         public bool CheckInputFields()
         {
-            if (firstNameTextBox.Text == "" && lastNameTextBox.Text == "")
+            if (firstNameTextBox.Text == "" || lastNameTextBox.Text == "")
             {
                 MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

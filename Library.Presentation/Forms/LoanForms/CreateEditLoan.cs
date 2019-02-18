@@ -111,7 +111,7 @@ namespace Library.Presentation.Forms.LoanForms
 
         private bool CheckInputFields()
         {
-            if (studentsListBox.SelectedItem == null && booksListBox.SelectedItem == null)
+            if (studentsListBox.SelectedItem == null || booksListBox.SelectedItem == null)
             {
                 MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

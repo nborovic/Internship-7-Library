@@ -113,7 +113,7 @@ namespace Library.Presentation.Forms.BookForms
         private bool CheckInputFields()
         {
             if (nameTextBox.Text == "" || genreComboBox.SelectedItem == null || numberOfCopiesTextBox.Text == "" ||
-                numberOfPagesTextBox.Text == "" && authorsListBox.SelectedItem == null ||
+                numberOfPagesTextBox.Text == "" || authorsListBox.SelectedItem == null ||
                 publishersListBox.SelectedItem == null)
             {
                 MessageBox.Show(@"One or more input fields empty!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -124,6 +124,12 @@ namespace Library.Presentation.Forms.BookForms
             {
                 MessageBox.Show(@"Forbidden characters used in name input!", @"Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (int.Parse(numberOfCopiesTextBox.Text) - _bookToEdit.GetNumberOfTakenCopies() < 0)
+            {
+                MessageBox.Show(@"You can't change number of copies to be lower than number of borrowed books!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
